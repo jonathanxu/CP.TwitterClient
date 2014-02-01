@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface CPUser : NSObject
-
+- (void)loginWithDictionary:(NSDictionary *)dictionary;
+- (BOOL)isLoggedIn;
+- (void)logout;
 @end

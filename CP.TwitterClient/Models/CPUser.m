@@ -8,6 +8,82 @@
 
 #import "CPUser.h"
 
+static NSString *const PersistKey = @"CP.TwitterClient.CPUser";
+
+@interface CPUser ()
+@property (strong, nonatomic) NSDictionary *authAttributes;
+
+- (void)setAuthAttributes:(NSDictionary *)authAttributes;
+- (NSDictionary *)load;
+- (BOOL)persist;
+
+@end
+
 @implementation CPUser
+
+# pragma mark - auth attributes, and persistence
+
+@synthesize authAttributes = _authAttributes;
+
+- (void)setAuthAttributes:(NSDictionary *)authAttributes
+{
+    if (![_authAttributes isEqualToDictionary:authAttributes]) {
+        NSLog(@"CPUser.setAttributes: changed");
+        _authAttributes = authAttributes;
+    }
+}
+
+- (NSDictionary *)load
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSData *data = (NSData *)[ud objectForKey:PersistKey];
+    self.authAttributes = (NSDictionary *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
+    return self.authAttributes;
+}
+
+- (BOOL)persist
+{
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.authAttributes];
+    [ud setObject:data forKey:PersistKey];
+    BOOL retVal = [ud synchronize];
+    if (retVal) {
+        NSLog(@"CPUser.setAttributes: persist success");
+    }
+    else {
+        NSLog(@"CPUser.setAttributes: persist failure");
+    }
+    return retVal;
+}
+
+# pragma mark - init
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self load];
+    }
+    return self;
+}
+
+# pragma mark - login, logout
+
+- (void)loginWithDictionary:(NSDictionary *)dictionary
+{
+    self.authAttributes = dictionary;
+    [self persist];
+}
+
+- (BOOL)isLoggedIn
+{
+    return ([self.authAttributes objectForKey:@"credentials"] != nil);
+}
+
+- (void)logout
+{
+    self.authAttributes = nil;
+    [self persist];
+}
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "CPAppDelegate.h"
+#import "Models/CPUser.h"
 #import "Views/CPLaunchViewController.h"
 
 @interface CPAppDelegate ()
@@ -22,7 +23,15 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    self.window.rootViewController = self.launchViewController;
+    self.currentUser = [[CPUser alloc] init];
+    if ([self.currentUser isLoggedIn]) {
+        NSLog(@"CPAppDelegate.application:didFinishLaunchingWithOptions: user is logged in");
+    }
+    else {
+        NSLog(@"CPAppDelegate.application:didFinishLaunchingWithOptions: user is not logged in");
+        self.window.rootViewController = self.launchViewController;
+        self.launchViewController.currentUser = self.currentUser;
+    }
     
     return YES;
 }
