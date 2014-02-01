@@ -9,9 +9,9 @@
 #import "CPAppDelegate.h"
 #import "Models/CPUser.h"
 #import "Views/CPLaunchViewController.h"
+#import "Views/CPTimelineViewController.h"
 
 @interface CPAppDelegate ()
-@property (strong, nonatomic) CPLaunchViewController *launchViewController;
 @end
 
 @implementation CPAppDelegate
@@ -26,11 +26,16 @@
     self.currentUser = [[CPUser alloc] init];
     if ([self.currentUser isLoggedIn]) {
         NSLog(@"CPAppDelegate.application:didFinishLaunchingWithOptions: user is logged in");
+        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"TimelineStoryboard" bundle:nil];
+        CPTimelineViewController *vc = (CPTimelineViewController *)[[sb instantiateInitialViewController] topViewController];
+        vc.currentUser = self.currentUser;
+        self.window.rootViewController = vc;
     }
     else {
         NSLog(@"CPAppDelegate.application:didFinishLaunchingWithOptions: user is not logged in");
-        self.window.rootViewController = self.launchViewController;
-        self.launchViewController.currentUser = self.currentUser;
+        CPLaunchViewController *vc = [[CPLaunchViewController alloc] init];
+        vc.currentUser = self.currentUser;
+        self.window.rootViewController = vc;
     }
     
     return YES;
@@ -61,18 +66,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-}
-
-#pragma mark - Launch and Timeline View Controllers
-
-@synthesize launchViewController = _launchViewController;
-
-- (CPLaunchViewController *)launchViewController
-{
-    if (!_launchViewController) {
-        _launchViewController = [[CPLaunchViewController alloc] init];
-    }
-    return _launchViewController;
 }
 
 @end

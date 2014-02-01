@@ -25,6 +25,8 @@
 		3E02AC2E189CD82C0092C4BB /* CPLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E02AC2C189CD82C0092C4BB /* CPLaunchViewController.m */; };
 		3E02AC2F189CD82C0092C4BB /* CPLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E02AC2D189CD82C0092C4BB /* CPLaunchViewController.xib */; };
 		3E02AC33189CDCA30092C4BB /* CPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E02AC32189CDCA30092C4BB /* CPUser.m */; };
+		3E02AC3C189DB8C10092C4BB /* TimelineStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E02AC3B189DB8C10092C4BB /* TimelineStoryboard.storyboard */; };
+		3E02AC3F189DBBAA0092C4BB /* CPTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E02AC3E189DBBAA0092C4BB /* CPTimelineViewController.m */; };
 		9A0384B78693400585B1C063 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4755C804DA499DB28064B7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -64,6 +66,9 @@
 		3E02AC2D189CD82C0092C4BB /* CPLaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CPLaunchViewController.xib; path = Views/CPLaunchViewController.xib; sourceTree = "<group>"; };
 		3E02AC31189CDCA30092C4BB /* CPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPUser.h; path = Models/CPUser.h; sourceTree = "<group>"; };
 		3E02AC32189CDCA30092C4BB /* CPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPUser.m; path = Models/CPUser.m; sourceTree = "<group>"; };
+		3E02AC3B189DB8C10092C4BB /* TimelineStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = TimelineStoryboard.storyboard; path = Views/TimelineStoryboard.storyboard; sourceTree = "<group>"; };
+		3E02AC3D189DBBAA0092C4BB /* CPTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPTimelineViewController.h; path = Views/CPTimelineViewController.h; sourceTree = "<group>"; };
+		3E02AC3E189DBBAA0092C4BB /* CPTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPTimelineViewController.m; path = Views/CPTimelineViewController.m; sourceTree = "<group>"; };
 		D3DB3DB23A2F4778B031B0A2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +180,9 @@
 				3E02AC2B189CD82C0092C4BB /* CPLaunchViewController.h */,
 				3E02AC2C189CD82C0092C4BB /* CPLaunchViewController.m */,
 				3E02AC2D189CD82C0092C4BB /* CPLaunchViewController.xib */,
+				3E02AC3B189DB8C10092C4BB /* TimelineStoryboard.storyboard */,
+				3E02AC3D189DBBAA0092C4BB /* CPTimelineViewController.h */,
+				3E02AC3E189DBBAA0092C4BB /* CPTimelineViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -268,6 +276,7 @@
 			files = (
 				3E02AC2F189CD82C0092C4BB /* CPLaunchViewController.xib in Resources */,
 				3E02AC21189CC5C30092C4BB /* README.md in Resources */,
+				3E02AC3C189DB8C10092C4BB /* TimelineStoryboard.storyboard in Resources */,
 				3E02ABFC189CC3FA0092C4BB /* InfoPlist.strings in Resources */,
 				3E02AC2A189CD7040092C4BB /* Twitter_logo_white.png in Resources */,
 				3E02AC23189CC5D00092C4BB /* Podfile in Resources */,
@@ -326,6 +335,7 @@
 				3E02AC2E189CD82C0092C4BB /* CPLaunchViewController.m in Sources */,
 				3E02AC33189CDCA30092C4BB /* CPUser.m in Sources */,
 				3E02ABFE189CC3FA0092C4BB /* main.m in Sources */,
+				3E02AC3F189DBBAA0092C4BB /* CPTimelineViewController.m in Sources */,
 				3E02AC02189CC3FA0092C4BB /* CPAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
