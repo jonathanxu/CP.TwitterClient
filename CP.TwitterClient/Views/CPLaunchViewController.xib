@@ -14,12 +14,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Twitter_logo_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="APf-Sf-1In">
-                    <rect key="frame" x="103" y="143" width="114" height="93"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Twitter_logo_white.png" translatesAutoresizingMaskIntoConstraints="NO" id="APf-Sf-1In">
+                    <rect key="frame" x="103" y="238" width="114" height="93"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="93" id="HVl-l3-T4z"/>
+                        <constraint firstAttribute="width" constant="114" id="QTp-sf-vlM"/>
+                    </constraints>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMy-2V-CDI">
-                    <rect key="frame" x="20" y="269" width="280" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMy-2V-CDI">
+                    <rect key="frame" x="136" y="351" width="48" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                     <state key="normal" title="Login">
@@ -32,6 +36,12 @@
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.33333333333333331" green="0.67450980392156867" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="XMy-2V-CDI" secondAttribute="centerX" id="DwI-Kw-6Ah"/>
+                <constraint firstItem="XMy-2V-CDI" firstAttribute="top" secondItem="APf-Sf-1In" secondAttribute="bottom" constant="20" id="MFQ-fm-l4w"/>
+                <constraint firstAttribute="centerY" secondItem="APf-Sf-1In" secondAttribute="centerY" id="bok-ME-7yW"/>
+                <constraint firstAttribute="centerX" secondItem="APf-Sf-1In" secondAttribute="centerX" id="wWF-CL-dAZ"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

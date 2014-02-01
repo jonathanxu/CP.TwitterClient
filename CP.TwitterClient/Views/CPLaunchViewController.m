@@ -27,7 +27,7 @@
     
     NSDictionary *key = @{@"consumer_key": @"ans9wMG7I4gicfyaVf7Mkw",
                           @"consumer_secret": @"UtC1DWiw4CCYAuHXFEMXfybmYLjq8b753Kmp7pE4OOA"
-                          };
+                         };
     SimpleAuth.configuration[@"twitter"] = key;
     [SimpleAuth authorize:@"twitter" completion:^(id responseObject, NSError *error) {
         NSLog(@"SimpleAuth.authorize:completion: %@", responseObject);
