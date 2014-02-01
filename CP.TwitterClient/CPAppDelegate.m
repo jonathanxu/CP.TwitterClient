@@ -7,6 +7,11 @@
 //
 
 #import "CPAppDelegate.h"
+#import "Views/CPLaunchViewController.h"
+
+@interface CPAppDelegate ()
+@property (strong, nonatomic) CPLaunchViewController *launchViewController;
+@end
 
 @implementation CPAppDelegate
 
@@ -16,6 +21,9 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    self.window.rootViewController = self.launchViewController;
+    
     return YES;
 }
 
@@ -44,6 +52,18 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Launch and Timeline View Controllers
+
+@synthesize launchViewController = _launchViewController;
+
+- (CPLaunchViewController *)launchViewController
+{
+    if (!_launchViewController) {
+        _launchViewController = [[CPLaunchViewController alloc] init];
+    }
+    return _launchViewController;
 }
 
 @end
