@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CPLaunchViewController">
             <connections>
+                <outlet property="loginErrorLabel" destination="SdC-sB-bUF" id="9Ub-lt-Gh3"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -34,12 +35,22 @@
                         <action selector="touchLoginButton" destination="-1" eventType="touchUpInside" id="gZd-0V-afn"/>
                     </connections>
                 </button>
+                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sorry" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="SdC-sB-bUF">
+                    <rect key="frame" x="20" y="405" width="280" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.33333333333333331" green="0.67450980392156867" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="XMy-2V-CDI" secondAttribute="centerX" id="DwI-Kw-6Ah"/>
                 <constraint firstItem="XMy-2V-CDI" firstAttribute="top" secondItem="APf-Sf-1In" secondAttribute="bottom" constant="20" id="MFQ-fm-l4w"/>
+                <constraint firstAttribute="trailing" secondItem="SdC-sB-bUF" secondAttribute="trailing" constant="20" id="RW7-OW-ZAT"/>
                 <constraint firstAttribute="centerY" secondItem="APf-Sf-1In" secondAttribute="centerY" id="bok-ME-7yW"/>
+                <constraint firstItem="SdC-sB-bUF" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="20" id="j2T-3K-tuh"/>
+                <constraint firstItem="SdC-sB-bUF" firstAttribute="top" secondItem="XMy-2V-CDI" secondAttribute="bottom" constant="20" id="wEQ-zZ-oDp"/>
                 <constraint firstAttribute="centerX" secondItem="APf-Sf-1In" secondAttribute="centerX" id="wWF-CL-dAZ"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
