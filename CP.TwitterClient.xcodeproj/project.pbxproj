@@ -24,6 +24,7 @@
 		3E02AC2A189CD7040092C4BB /* Twitter_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E02AC29189CD7040092C4BB /* Twitter_logo_white.png */; };
 		3E02AC2E189CD82C0092C4BB /* CPLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E02AC2C189CD82C0092C4BB /* CPLaunchViewController.m */; };
 		3E02AC2F189CD82C0092C4BB /* CPLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E02AC2D189CD82C0092C4BB /* CPLaunchViewController.xib */; };
+		3E02AC33189CDCA30092C4BB /* CPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E02AC32189CDCA30092C4BB /* CPUser.m */; };
 		9A0384B78693400585B1C063 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4755C804DA499DB28064B7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,8 @@
 		3E02AC2B189CD82C0092C4BB /* CPLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPLaunchViewController.h; path = Views/CPLaunchViewController.h; sourceTree = "<group>"; };
 		3E02AC2C189CD82C0092C4BB /* CPLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPLaunchViewController.m; path = Views/CPLaunchViewController.m; sourceTree = "<group>"; };
 		3E02AC2D189CD82C0092C4BB /* CPLaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CPLaunchViewController.xib; path = Views/CPLaunchViewController.xib; sourceTree = "<group>"; };
+		3E02AC31189CDCA30092C4BB /* CPUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPUser.h; path = Models/CPUser.h; sourceTree = "<group>"; };
+		3E02AC32189CDCA30092C4BB /* CPUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPUser.m; path = Models/CPUser.m; sourceTree = "<group>"; };
 		D3DB3DB23A2F4778B031B0A2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -126,6 +129,7 @@
 		3E02ABF7189CC3FA0092C4BB /* CP.TwitterClient */ = {
 			isa = PBXGroup;
 			children = (
+				3E02AC30189CDC800092C4BB /* Models */,
 				3E02AC24189CD45C0092C4BB /* Views */,
 				3E02AC00189CC3FA0092C4BB /* CPAppDelegate.h */,
 				3E02AC01189CC3FA0092C4BB /* CPAppDelegate.m */,
@@ -173,6 +177,15 @@
 				3E02AC2D189CD82C0092C4BB /* CPLaunchViewController.xib */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		3E02AC30189CDC800092C4BB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				3E02AC31189CDCA30092C4BB /* CPUser.h */,
+				3E02AC32189CDCA30092C4BB /* CPUser.m */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -311,6 +324,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E02AC2E189CD82C0092C4BB /* CPLaunchViewController.m in Sources */,
+				3E02AC33189CDCA30092C4BB /* CPUser.m in Sources */,
 				3E02ABFE189CC3FA0092C4BB /* main.m in Sources */,
 				3E02AC02189CC3FA0092C4BB /* CPAppDelegate.m in Sources */,
 			);

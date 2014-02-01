@@ -17,7 +17,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    NSLog(@"CPLaunchViewController.viewDidLoad");
+}
+
+- (IBAction)touchLoginButton
+{
+    NSLog(@"CPLaunchViewController.touchLoginButton");
 }
 
 @end
