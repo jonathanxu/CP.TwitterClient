@@ -15,16 +15,14 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPUser";
 
 @interface CPUser ()
 @property (strong, nonatomic) NSDictionary *authAttributes;
-
 - (void)setAuthAttributes:(NSDictionary *)authAttributes;
 - (NSDictionary *)load;
 - (BOOL)persist;
-
 @end
 
 @implementation CPUser
 
-# pragma mark - auth attributes, and persistence
+#pragma mark - auth attributes, and persistence
 
 @synthesize authAttributes = _authAttributes;
 
@@ -33,6 +31,15 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPUser";
     if (![_authAttributes isEqualToDictionary:authAttributes]) {
         NSLog(@"CPUser.setAttributes: changed");
         _authAttributes = authAttributes;
+        NSDictionary *credentials = [authAttributes objectForKey:@"credentials"];
+        if (credentials) {
+            self.accessToken = [credentials objectForKey:@"token"];
+            self.accessTokenSecret = [credentials objectForKey:@"secret"];
+        }
+        else {
+            self.accessToken = nil;
+            self.accessTokenSecret = nil;
+        }
     }
 }
 
@@ -51,15 +58,15 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPUser";
     [ud setObject:data forKey:kPersistKey];
     BOOL retVal = [ud synchronize];
     if (retVal) {
-        NSLog(@"CPUser.setAttributes: persist success");
+        NSLog(@"CPUser.persist: success");
     }
     else {
-        NSLog(@"CPUser.setAttributes: persist failure");
+        NSLog(@"CPUser.persist: failure");
     }
     return retVal;
 }
 
-# pragma mark - init
+#pragma mark - init
 
 - (instancetype)init
 {
@@ -70,12 +77,13 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPUser";
     return self;
 }
 
-# pragma mark - login, logout
+#pragma mark - login, logout
 
 - (void)loginWithDictionary:(NSDictionary *)dictionary
 {
     self.authAttributes = dictionary;
     [self persist];
+
     [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLoginNotification object:nil];
 }
 
@@ -88,6 +96,7 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPUser";
 {
     self.authAttributes = nil;
     [self persist];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogoutNotification object:nil];
 }
 

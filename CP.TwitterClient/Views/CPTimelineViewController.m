@@ -7,20 +7,19 @@
 //
 
 #import "CPTimelineViewController.h"
+#import "CPTimelineTweets.h"
+#import "CPTwitterAPIClient.h"
 
 @interface CPTimelineViewController ()
+
+@property (strong, nonatomic) CPTimelineTweets *tweets;
+@property (strong, nonatomic) CPTwitterAPIClient *apiClient;
+
+- (void)reload;
+
 @end
 
 @implementation CPTimelineViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
@@ -29,20 +28,18 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.apiClient = [[CPTwitterAPIClient alloc] initWithUser:self.currentUser];
+    self.tweets = [[CPTimelineTweets alloc] init];
+    if ([self.tweets count] == 0) {
+        [self reload];
+    }
 }
 
 #pragma mark - bar buttons
 - (IBAction)touchSignOutButton:(id)sender
 {
     [self.currentUser logout];
+    [self.tweets clear];
 }
 
 #pragma mark - Table view data source
@@ -121,5 +118,19 @@
 }
 
 */
+
+- (void)reload
+{
+    [self.apiClient fetch:20
+                  sinceId:0
+                    maxId:0
+                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                      NSLog(@"CPTimelineViewController.reload: success. %@", responseObject);
+                  }
+                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                      NSLog(@"CPTimelineViewController.reload: failure. %@", error);
+                  }
+     ];
+}
 
 @end

@@ -12,7 +12,12 @@ extern NSString *const UserDidLoginNotification;
 extern NSString *const UserDidLogoutNotification;
 
 @interface CPUser : NSObject
+
+@property (strong, nonatomic) NSString *accessToken;
+@property (strong, nonatomic) NSString *accessTokenSecret;
+
 - (void)loginWithDictionary:(NSDictionary *)dictionary;
 - (BOOL)isLoggedIn;
 - (void)logout;
+
 @end
