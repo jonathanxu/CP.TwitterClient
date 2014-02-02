@@ -12,6 +12,8 @@
 #import "Views/CPTimelineViewController.h"
 
 @interface CPAppDelegate ()
+@property (strong, nonatomic) CPLaunchViewController *launchVC;
+@property (strong, nonatomic) UINavigationController *timelineNVC;
 @end
 
 @implementation CPAppDelegate
@@ -24,21 +26,34 @@
     [self.window makeKeyAndVisible];
     
     self.currentUser = [[CPUser alloc] init];
+    [self updateRootVC];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootVC) name:UserDidLoginNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootVC) name:UserDidLogoutNotification object:nil];
+    
+    return YES;
+}
+
+- (void)updateRootVC
+{
     if ([self.currentUser isLoggedIn]) {
         NSLog(@"CPAppDelegate.application:didFinishLaunchingWithOptions: user is logged in");
-        UIStoryboard *sb = [UIStoryboard storyboardWithName:@"TimelineStoryboard" bundle:nil];
-        CPTimelineViewController *vc = (CPTimelineViewController *)[[sb instantiateInitialViewController] topViewController];
-        vc.currentUser = self.currentUser;
-        self.window.rootViewController = vc;
+        if (!self.timelineNVC) {
+            UIStoryboard *sb = [UIStoryboard storyboardWithName:@"TimelineStoryboard" bundle:nil];
+            self.timelineNVC = (UINavigationController *)[sb instantiateInitialViewController];
+            CPTimelineViewController *vc = (CPTimelineViewController *)[self.timelineNVC topViewController];
+            vc.currentUser = self.currentUser;
+        }
+        self.window.rootViewController = self.timelineNVC;
     }
     else {
         NSLog(@"CPAppDelegate.application:didFinishLaunchingWithOptions: user is not logged in");
-        CPLaunchViewController *vc = [[CPLaunchViewController alloc] init];
-        vc.currentUser = self.currentUser;
-        self.window.rootViewController = vc;
+        if (!self.launchVC) {
+            self.launchVC = [[CPLaunchViewController alloc] init];
+            self.launchVC.currentUser = self.currentUser;
+        }
+        self.window.rootViewController = self.launchVC;
     }
-    
-    return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

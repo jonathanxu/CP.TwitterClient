@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+extern NSString *const UserDidLoginNotification;
+extern NSString *const UserDidLogoutNotification;
+
 @interface CPUser : NSObject
 - (void)loginWithDictionary:(NSDictionary *)dictionary;
 - (BOOL)isLoggedIn;

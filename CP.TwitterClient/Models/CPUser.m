@@ -8,7 +8,10 @@
 
 #import "CPUser.h"
 
-static NSString *const PersistKey = @"CP.TwitterClient.CPUser";
+NSString *const UserDidLoginNotification = @"UserDidLoginNotification";
+NSString *const UserDidLogoutNotification = @"UserDidLogoutNotification";
+
+static NSString *const kPersistKey = @"CP.TwitterClient.CPUser";
 
 @interface CPUser ()
 @property (strong, nonatomic) NSDictionary *authAttributes;
@@ -36,7 +39,7 @@ static NSString *const PersistKey = @"CP.TwitterClient.CPUser";
 - (NSDictionary *)load
 {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    NSData *data = (NSData *)[ud objectForKey:PersistKey];
+    NSData *data = (NSData *)[ud objectForKey:kPersistKey];
     self.authAttributes = (NSDictionary *)[NSKeyedUnarchiver unarchiveObjectWithData:data];
     return self.authAttributes;
 }
@@ -45,7 +48,7 @@ static NSString *const PersistKey = @"CP.TwitterClient.CPUser";
 {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.authAttributes];
-    [ud setObject:data forKey:PersistKey];
+    [ud setObject:data forKey:kPersistKey];
     BOOL retVal = [ud synchronize];
     if (retVal) {
         NSLog(@"CPUser.setAttributes: persist success");
@@ -73,6 +76,7 @@ static NSString *const PersistKey = @"CP.TwitterClient.CPUser";
 {
     self.authAttributes = dictionary;
     [self persist];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLoginNotification object:nil];
 }
 
 - (BOOL)isLoggedIn
@@ -84,6 +88,7 @@ static NSString *const PersistKey = @"CP.TwitterClient.CPUser";
 {
     self.authAttributes = nil;
     [self persist];
+    [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLogoutNotification object:nil];
 }
 
 @end
