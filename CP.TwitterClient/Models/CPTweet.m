@@ -44,4 +44,24 @@
     [aCoder encodeObject:self.tweet];
 }
 
+#pragma mark - properties
+
+- (void)setTweet:(NSDictionary *)tweet
+{
+    _tweet = tweet;
+
+    NSDictionary *userDict = [tweet objectForKey:@"user"];
+    self.user__name = [userDict objectForKey:@"name"];
+    self.user__screen_name = [userDict objectForKey:@"screen_name"];
+    self.user__profile_image_url = [userDict objectForKey:@"profile_image_url"];
+
+    self.retweet_count = [[tweet objectForKey:@"retweet_count"] unsignedIntegerValue];
+    self.favorite_count = [[tweet objectForKey:@"favorite_count"] unsignedIntegerValue];
+    self.retweeted = [[tweet objectForKey:@"retweeted"] boolValue];
+    self.favorited = [[tweet objectForKey:@"favorited"] boolValue];
+    
+    self.text = [tweet objectForKey:@"text"];
+    self.created_at = [tweet objectForKey:@"created_at"];
+}
+
 @end
