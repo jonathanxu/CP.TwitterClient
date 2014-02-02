@@ -59,8 +59,6 @@ static NSString *const kTwitterConsumerSecret = @"UtC1DWiw4CCYAuHXFEMXfybmYLjq8b
                                            accessToken:self.user.accessToken
                                            tokenSecret:self.user.accessTokenSecret];
     
-    NSLog(@"CPTwitterAPIClient.fetch: %@", request);
-    
     AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     op.responseSerializer = [AFJSONResponseSerializer serializer];
     [op setCompletionBlockWithSuccess:success failure:failure];
