@@ -125,7 +125,8 @@
                   sinceId:0
                     maxId:0
                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                      NSLog(@"CPTimelineViewController.reload: success. %@", responseObject);
+                      NSLog(@"CPTimelineViewController.reload: success");
+                      [self.tweets reloadTweets:(NSArray *) responseObject];
                   }
                   failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                       NSLog(@"CPTimelineViewController.reload: failure. %@", error);

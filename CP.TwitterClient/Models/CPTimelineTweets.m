@@ -7,11 +7,12 @@
 //
 
 #import "CPTimelineTweets.h"
+#import "CPTweet.h"
 
 static NSString *const kPersistKey = @"CP.TwitterClient.CPTimelineTweets";
 
 @interface CPTimelineTweets ()
-@property (strong, nonatomic) NSMutableArray *tweets;
+@property (strong, nonatomic) NSMutableArray *tweetList;
 - (void)load;
 - (BOOL)persist;
 @end
@@ -29,13 +30,22 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPTimelineTweets";
 
 - (void)clear
 {
-    self.tweets = nil;
+    self.tweetList = nil;
     [self persist];
 }
 
 - (NSUInteger)count
 {
-    return [self.tweets count];
+    return [self.tweetList count];
+}
+
+- (void)reloadTweets:(NSArray *)tweets
+{
+    self.tweetList = [[NSMutableArray alloc] initWithCapacity:[tweets count]];
+    for (NSDictionary *tweet in tweets) {
+        [self.tweetList addObject:[[CPTweet alloc] initWithDictionary:tweet]];
+    }
+    [self persist];
 }
 
 # pragma mark - private implementation
@@ -44,13 +54,13 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPTimelineTweets";
 {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     NSData *data = (NSData *)[ud objectForKey:kPersistKey];
-    self.tweets = [(NSArray *)[NSKeyedUnarchiver unarchiveObjectWithData:data] mutableCopy];
+    self.tweetList = [(NSArray *)[NSKeyedUnarchiver unarchiveObjectWithData:data] mutableCopy];
 }
 
 - (BOOL)persist
 {
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
-    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.tweets];
+    NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self.tweetList];
     [ud setObject:data forKey:kPersistKey];
     BOOL retVal = [ud synchronize];
     if (retVal) {

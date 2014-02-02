@@ -11,3 +11,15 @@ Following Twitter's Branding Guideline: https://about.twitter.com/press/brand-as
 ### Twitter OAuth
 
 Use SimpleAuth/Twitter instead of AFNetworking/AFOAuth1Client. SimpleAuth has both `Twitter` and `TwitterWeb`, this app uses `Twitter` which interactives with `Accounts.framework` and `Social.framework`.  `Twitter` mode returns consumer secret and token.
+
+It is easy to switch to `TwitterWeb` and pop up a web view for web OAuth flow.
+
+### Calling Twitter API
+
+Once Twitter OAuth credentials are obtained, this app uses GCOAuth (cocoa-oauth) to generate `NSURLRequest` with OAuth signature.
+
+With `NSURLRequest`, AFHTTPRequestOperation is used to make the actual HTTP call.
+
+### Tweet Model
+
+`CPTweet` is a model class that encapsulate a `NSDictionary`. It implements NSCoder protocol in order to be serialized and archived/unarchived.

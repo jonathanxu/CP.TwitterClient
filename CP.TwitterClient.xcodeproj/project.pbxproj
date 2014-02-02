@@ -29,6 +29,7 @@
 		3E02AC3F189DBBAA0092C4BB /* CPTimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E02AC3E189DBBAA0092C4BB /* CPTimelineViewController.m */; };
 		3E7016F8189DCF4C006A081D /* CPTimelineTweets.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7016F7189DCF4C006A081D /* CPTimelineTweets.m */; };
 		3E7016FC189E2CD9006A081D /* CPTwitterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7016FB189E2CD9006A081D /* CPTwitterAPIClient.m */; };
+		3E7016FF189ECC77006A081D /* CPTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7016FE189ECC77006A081D /* CPTweet.m */; };
 		9A0384B78693400585B1C063 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4755C804DA499DB28064B7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,8 @@
 		3E7016F7189DCF4C006A081D /* CPTimelineTweets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPTimelineTweets.m; path = Models/CPTimelineTweets.m; sourceTree = "<group>"; };
 		3E7016FA189E2CD9006A081D /* CPTwitterAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPTwitterAPIClient.h; path = API/CPTwitterAPIClient.h; sourceTree = "<group>"; };
 		3E7016FB189E2CD9006A081D /* CPTwitterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPTwitterAPIClient.m; path = API/CPTwitterAPIClient.m; sourceTree = "<group>"; };
+		3E7016FD189ECC77006A081D /* CPTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPTweet.h; path = Models/CPTweet.h; sourceTree = "<group>"; };
+		3E7016FE189ECC77006A081D /* CPTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPTweet.m; path = Models/CPTweet.m; sourceTree = "<group>"; };
 		D3DB3DB23A2F4778B031B0A2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -197,10 +200,12 @@
 		3E02AC30189CDC800092C4BB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3E02AC31189CDCA30092C4BB /* CPUser.h */,
-				3E02AC32189CDCA30092C4BB /* CPUser.m */,
 				3E7016F6189DCF4C006A081D /* CPTimelineTweets.h */,
 				3E7016F7189DCF4C006A081D /* CPTimelineTweets.m */,
+				3E7016FD189ECC77006A081D /* CPTweet.h */,
+				3E7016FE189ECC77006A081D /* CPTweet.m */,
+				3E02AC31189CDCA30092C4BB /* CPUser.h */,
+				3E02AC32189CDCA30092C4BB /* CPUser.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E7016FF189ECC77006A081D /* CPTweet.m in Sources */,
 				3E02AC2E189CD82C0092C4BB /* CPLaunchViewController.m in Sources */,
 				3E02AC33189CDCA30092C4BB /* CPUser.m in Sources */,
 				3E02ABFE189CC3FA0092C4BB /* main.m in Sources */,

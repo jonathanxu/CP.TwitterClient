@@ -12,4 +12,5 @@
 @interface CPTimelineTweets : NSObject
 - (void)clear;
 - (NSUInteger)count;
+- (void)reloadTweets:(NSArray *)tweets;
 @end
