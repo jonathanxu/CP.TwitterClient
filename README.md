@@ -32,4 +32,6 @@ Profile image is rendered asynchronously using UIImageView+AFNetworking.
 
 Time is parsed from Twitter API, and formatted to very short (1h), or short (2/2/14), or long form.  This is done inside model `CPTweet`.
 
+#### Touch and Segue
 
+Wire 3 separate touch events for reply, retweet, and faovite. Use `CPTimelineViewController.tableView:didSelectRowAtIndexPath` for segue into tweet detail view.

@@ -20,9 +20,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 // tweet text content
 @property (weak, nonatomic) IBOutlet UILabel *tweetContentLabel;
-// retweet and favoriate images
-@property (weak, nonatomic) IBOutlet UIImageView *retweetImage;
-@property (weak, nonatomic) IBOutlet UIImageView *favoriteImage;
+// reply, retweet, and favoriate buttons
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
+@property (weak, nonatomic) IBOutlet UIButton *retweetButton;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @end
 
 @implementation CPTimelineCell
@@ -42,6 +43,7 @@
     self.tweetContentLabel.text = model.text;
     self.timeLabel.text = model.created_at_abbreviated;
     
+    [self adjustReplyImage];
     [self adjustRetweetImage];
     [self adjustFavoriteImage];
 }
@@ -70,24 +72,49 @@
     return attributedName;
 }
 
+- (void)adjustReplyImage
+{
+    [self.replyButton setTitle:@"" forState:UIControlStateNormal];
+    [self.replyButton setBackgroundImage:[UIImage imageNamed:@"reply"] forState:UIControlStateNormal];
+}
+
 - (void)adjustRetweetImage
 {
+    [self.retweetButton setTitle:@"" forState:UIControlStateNormal];
     if (self.model.retweeted) {
-        self.retweetImage.image = [UIImage imageNamed:@"retweet_on"];
+        [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet_on"] forState:UIControlStateNormal];
     }
     else {
-        self.retweetImage.image = [UIImage imageNamed:@"retweet"];
+        [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet"] forState:UIControlStateNormal];
     }
 }
 
 - (void)adjustFavoriteImage
 {
+    [self.favoriteButton setTitle:@"" forState:UIControlStateNormal];
     if (self.model.favorited) {
-        self.favoriteImage.image = [UIImage imageNamed:@"favorite_on"];
+        [self.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favorite_on"] forState:UIControlStateNormal];
     }
     else {
-        self.favoriteImage.image = [UIImage imageNamed:@"favorite"];
+        [self.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favorite"] forState:UIControlStateNormal];
     }
+}
+
+#pragma mark - touch reply, retweet, favorite
+
+- (IBAction)touchReply
+{
+    NSLog(@"CPTimelineCell.touchReply");
+}
+
+- (IBAction)touchRetweet
+{
+    NSLog(@"CPTimelineCell.touchRetweet");
+}
+
+- (IBAction)touchFavorite
+{
+    NSLog(@"CPTimelineCell.touchFavorite");
 }
 
 @end
