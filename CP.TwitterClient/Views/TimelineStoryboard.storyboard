@@ -247,6 +247,7 @@
                             <constraint firstAttribute="trailing" secondItem="iQY-na-mFw" secondAttribute="trailing" constant="10" id="fZy-p2-BNi"/>
                             <constraint firstAttribute="trailing" secondItem="hQK-dh-S4g" secondAttribute="trailing" constant="10" id="hmp-Od-RzU"/>
                             <constraint firstItem="hQK-dh-S4g" firstAttribute="top" secondItem="yQZ-hQ-EJZ" secondAttribute="bottom" constant="12" id="r7W-5P-FXp"/>
+                            <constraint firstItem="Zu7-0O-MSr" firstAttribute="top" secondItem="yQZ-hQ-EJZ" secondAttribute="bottom" priority="900" constant="10" id="rTO-Ph-xLL"/>
                             <constraint firstItem="QTb-Z4-S3f" firstAttribute="top" secondItem="yQZ-hQ-EJZ" secondAttribute="bottom" constant="10" id="sgh-kW-Bi9"/>
                             <constraint firstItem="Zu7-0O-MSr" firstAttribute="bottom" secondItem="uWY-oI-6M1" secondAttribute="bottom" id="wiA-Xp-sav"/>
                         </constraints>
@@ -257,6 +258,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="retweetedByImage" destination="QTb-Z4-S3f" id="i8L-Ot-nHs"/>
+                        <outlet property="retweetedByLabel" destination="hQK-dh-S4g" id="2K1-jz-74r"/>
                         <outlet property="tweetContentLabel" destination="JJg-FW-QjH" id="jJ3-VK-NWJ"/>
                         <outlet property="userNameLabel" destination="iQY-na-mFw" id="IgY-KZ-E2A"/>
                         <outlet property="userProfileImage" destination="Zu7-0O-MSr" id="alc-Qo-KUK"/>

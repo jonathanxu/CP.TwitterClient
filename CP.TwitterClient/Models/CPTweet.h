@@ -10,6 +10,8 @@
 
 @interface CPTweet : NSObject <NSCoding>
 
+@property (strong, nonatomic) NSString *retweeted_by;
+
 @property (strong, nonatomic) NSString *user__name;
 @property (strong, nonatomic) NSString *user__screen_name; // twitter handle
 @property (strong, nonatomic) NSString *user__profile_image_url;
