@@ -20,36 +20,30 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 // tweet text content
 @property (weak, nonatomic) IBOutlet UILabel *tweetContentLabel;
+// retweet and favoriate images
+@property (weak, nonatomic) IBOutlet UIImageView *retweetImage;
+@property (weak, nonatomic) IBOutlet UIImageView *favoriteImage;
 @end
 
 @implementation CPTimelineCell
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 #pragma mark - set model
 
-- (void)setModel:(CPTweet *)tweet
-{
-    [self.userProfileImage setImageWithURL:[NSURL URLWithString:tweet.user__profile_image_url]];
-    
-    self.userNameLabel.attributedText = [self attributedName:tweet.user__name screen_name:tweet.user__screen_name];
+@synthesize model = _model;
 
-    self.tweetContentLabel.text = tweet.text;
-    self.timeLabel.text = tweet.created_at_abbreviated;
+- (void)setModel:(CPTweet *)model
+{
+    _model = model;
+    
+    [self.userProfileImage setImageWithURL:[NSURL URLWithString:model.user__profile_image_url]];
+    
+    self.userNameLabel.attributedText = [self attributedName:model.user__name screen_name:model.user__screen_name];
+
+    self.tweetContentLabel.text = model.text;
+    self.timeLabel.text = model.created_at_abbreviated;
+    
+    [self adjustRetweetImage];
+    [self adjustFavoriteImage];
 }
 
 - (NSAttributedString *)attributedName:(NSString *)name screen_name:(NSString *)screen_name
@@ -74,6 +68,26 @@
                             range:[combined rangeOfString:handle
                                                   options:NSBackwardsSearch]];
     return attributedName;
+}
+
+- (void)adjustRetweetImage
+{
+    if (self.model.retweeted) {
+        self.retweetImage.image = [UIImage imageNamed:@"retweet_on"];
+    }
+    else {
+        self.retweetImage.image = [UIImage imageNamed:@"retweet"];
+    }
+}
+
+- (void)adjustFavoriteImage
+{
+    if (self.model.favorited) {
+        self.favoriteImage.image = [UIImage imageNamed:@"favorite_on"];
+    }
+    else {
+        self.favoriteImage.image = [UIImage imageNamed:@"favorite"];
+    }
 }
 
 @end

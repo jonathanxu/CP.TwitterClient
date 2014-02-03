@@ -55,7 +55,7 @@
     static NSString *CellIdentifier = @"TweetCell";
     CPTimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
-    [cell setModel:[self.tweets tweetAtIndex:indexPath.row]];
+    cell.model = [self.tweets tweetAtIndex:indexPath.row];
     
     return cell;
 }

@@ -119,8 +119,10 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="favoriteImage" destination="mdb-Jq-YOV" id="W7H-U0-fP1"/>
                                     <outlet property="retweetByImage" destination="2Nv-PD-XRG" id="8Pm-Ch-gcR"/>
                                     <outlet property="retweetByNameLabel" destination="N7k-xB-Zkq" id="ySB-ik-1k6"/>
+                                    <outlet property="retweetImage" destination="HzS-Ch-30i" id="WUC-lx-IUB"/>
                                     <outlet property="timeLabel" destination="LEw-Dh-Rae" id="dGV-cA-ewv"/>
                                     <outlet property="tweetContentLabel" destination="VGx-vk-rTC" id="Rd8-xN-Im2"/>
                                     <outlet property="userNameLabel" destination="dJt-UY-XXs" id="qKj-jb-zXH"/>

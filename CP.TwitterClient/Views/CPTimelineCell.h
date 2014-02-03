@@ -10,5 +10,6 @@
 #import "CPTweet.h"
 
 @interface CPTimelineCell : UITableViewCell
-- (void)setModel:(CPTweet *)tweet;
+// keep a weak reference to model, for init only at this point
+@property (weak, nonatomic) CPTweet *model;
 @end
