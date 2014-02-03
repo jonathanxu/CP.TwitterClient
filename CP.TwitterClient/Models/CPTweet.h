@@ -25,6 +25,8 @@
 @property (strong, nonatomic) NSString *created_at;
 @property (strong, nonatomic) NSString *created_at_abbreviated;
 
+@property (nonatomic) CGFloat viewHeightCached;
+
 // disabled initializer
 - (instancetype)init;
 // default initializer
