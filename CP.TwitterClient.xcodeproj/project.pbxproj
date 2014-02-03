@@ -21,7 +21,6 @@
 		3E02AC17189CC3FA0092C4BB /* CP_TwitterClientTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E02AC16189CC3FA0092C4BB /* CP_TwitterClientTests.m */; };
 		3E02AC21189CC5C30092C4BB /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 3E02AC20189CC5C30092C4BB /* README.md */; };
 		3E02AC23189CC5D00092C4BB /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 3E02AC22189CC5D00092C4BB /* Podfile */; };
-		3E02AC2A189CD7040092C4BB /* Twitter_logo_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E02AC29189CD7040092C4BB /* Twitter_logo_white.png */; };
 		3E02AC2E189CD82C0092C4BB /* CPLaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E02AC2C189CD82C0092C4BB /* CPLaunchViewController.m */; };
 		3E02AC2F189CD82C0092C4BB /* CPLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E02AC2D189CD82C0092C4BB /* CPLaunchViewController.xib */; };
 		3E02AC33189CDCA30092C4BB /* CPUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E02AC32189CDCA30092C4BB /* CPUser.m */; };
@@ -30,6 +29,7 @@
 		3E7016F8189DCF4C006A081D /* CPTimelineTweets.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7016F7189DCF4C006A081D /* CPTimelineTweets.m */; };
 		3E7016FC189E2CD9006A081D /* CPTwitterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7016FB189E2CD9006A081D /* CPTwitterAPIClient.m */; };
 		3E7016FF189ECC77006A081D /* CPTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7016FE189ECC77006A081D /* CPTweet.m */; };
+		3E701705189F103C006A081D /* CPTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E701704189F103C006A081D /* CPTimelineCell.m */; };
 		9A0384B78693400585B1C063 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4755C804DA499DB28064B7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -63,7 +63,6 @@
 		3E02AC16189CC3FA0092C4BB /* CP_TwitterClientTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CP_TwitterClientTests.m; sourceTree = "<group>"; };
 		3E02AC20189CC5C30092C4BB /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		3E02AC22189CC5D00092C4BB /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		3E02AC29189CD7040092C4BB /* Twitter_logo_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Twitter_logo_white.png; path = Images.xcassets/Twitter_logo_white.png; sourceTree = "<group>"; };
 		3E02AC2B189CD82C0092C4BB /* CPLaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPLaunchViewController.h; path = Views/CPLaunchViewController.h; sourceTree = "<group>"; };
 		3E02AC2C189CD82C0092C4BB /* CPLaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPLaunchViewController.m; path = Views/CPLaunchViewController.m; sourceTree = "<group>"; };
 		3E02AC2D189CD82C0092C4BB /* CPLaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CPLaunchViewController.xib; path = Views/CPLaunchViewController.xib; sourceTree = "<group>"; };
@@ -78,6 +77,8 @@
 		3E7016FB189E2CD9006A081D /* CPTwitterAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPTwitterAPIClient.m; path = API/CPTwitterAPIClient.m; sourceTree = "<group>"; };
 		3E7016FD189ECC77006A081D /* CPTweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPTweet.h; path = Models/CPTweet.h; sourceTree = "<group>"; };
 		3E7016FE189ECC77006A081D /* CPTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPTweet.m; path = Models/CPTweet.m; sourceTree = "<group>"; };
+		3E701703189F103C006A081D /* CPTimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPTimelineCell.h; path = Views/CPTimelineCell.h; sourceTree = "<group>"; };
+		3E701704189F103C006A081D /* CPTimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPTimelineCell.m; path = Views/CPTimelineCell.m; sourceTree = "<group>"; };
 		D3DB3DB23A2F4778B031B0A2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -149,7 +150,6 @@
 				3E02AC00189CC3FA0092C4BB /* CPAppDelegate.h */,
 				3E02AC01189CC3FA0092C4BB /* CPAppDelegate.m */,
 				3E02AC03189CC3FA0092C4BB /* Images.xcassets */,
-				3E02AC29189CD7040092C4BB /* Twitter_logo_white.png */,
 				3E02ABF8189CC3FA0092C4BB /* Supporting Files */,
 			);
 			path = CP.TwitterClient;
@@ -193,6 +193,8 @@
 				3E02AC3B189DB8C10092C4BB /* TimelineStoryboard.storyboard */,
 				3E02AC3D189DBBAA0092C4BB /* CPTimelineViewController.h */,
 				3E02AC3E189DBBAA0092C4BB /* CPTimelineViewController.m */,
+				3E701703189F103C006A081D /* CPTimelineCell.h */,
+				3E701704189F103C006A081D /* CPTimelineCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -301,7 +303,6 @@
 				3E02AC21189CC5C30092C4BB /* README.md in Resources */,
 				3E02AC3C189DB8C10092C4BB /* TimelineStoryboard.storyboard in Resources */,
 				3E02ABFC189CC3FA0092C4BB /* InfoPlist.strings in Resources */,
-				3E02AC2A189CD7040092C4BB /* Twitter_logo_white.png in Resources */,
 				3E02AC23189CC5D00092C4BB /* Podfile in Resources */,
 				3E02AC04189CC3FA0092C4BB /* Images.xcassets in Resources */,
 			);
@@ -362,6 +363,7 @@
 				3E7016FC189E2CD9006A081D /* CPTwitterAPIClient.m in Sources */,
 				3E7016F8189DCF4C006A081D /* CPTimelineTweets.m in Sources */,
 				3E02AC3F189DBBAA0092C4BB /* CPTimelineViewController.m in Sources */,
+				3E701705189F103C006A081D /* CPTimelineCell.m in Sources */,
 				3E02AC02189CC3FA0092C4BB /* CPAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

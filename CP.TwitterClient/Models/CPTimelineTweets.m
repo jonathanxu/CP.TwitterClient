@@ -7,7 +7,6 @@
 //
 
 #import "CPTimelineTweets.h"
-#import "CPTweet.h"
 
 static NSString *const kPersistKey = @"CP.TwitterClient.CPTimelineTweets";
 
@@ -37,6 +36,11 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPTimelineTweets";
 - (NSUInteger)count
 {
     return [self.tweetList count];
+}
+
+- (CPTweet *)tweetAtIndex:(NSUInteger)index
+{
+    return [self.tweetList objectAtIndex:index];
 }
 
 - (void)reloadTweets:(NSArray *)tweets
