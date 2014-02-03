@@ -139,6 +139,12 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="T5y-ft-k37"/>
                     </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="BoR-nK-iuI">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="refresh" destination="vdk-Zh-bsv" eventType="valueChanged" id="irH-V2-nao"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yEJ-W5-bYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

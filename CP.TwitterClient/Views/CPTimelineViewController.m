@@ -36,6 +36,12 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    NSLog(@"CPTimelineViewController:viewDidAppear");
+}
+
 #pragma mark - bar buttons
 - (IBAction)touchSignOutButton:(id)sender
 {
@@ -44,6 +50,17 @@
 }
 
 #pragma mark - Table view data source
+
+- (IBAction)refresh
+{
+    [self doRefresh];
+    
+}
+
+- (void)doRefresh
+{
+    [self reload];
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -119,6 +136,8 @@
                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
                       NSLog(@"CPTimelineViewController.reload: success");
                       [self.tweets reloadTweets:(NSArray *) responseObject];
+                      [self.tableView reloadData];
+                      [self.refreshControl endRefreshing];
                   }
                   failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                       NSLog(@"CPTimelineViewController.reload: failure. %@", error);
