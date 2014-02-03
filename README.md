@@ -23,3 +23,13 @@ With `NSURLRequest`, AFHTTPRequestOperation is used to make the actual HTTP call
 ### Tweet Model
 
 `CPTweet` is a model class that encapsulate a `NSDictionary`. It implements NSCoder protocol in order to be serialized and archived/unarchived.
+
+### Rendering Tweets in table view
+
+Name and screen name are combined and show in a NSAttributedString.
+
+Profile image is rendered asynchronously using UIImageView+AFNetworking.
+
+Time is parsed from Twitter API, and formatted to very short (1h), or short (2/2/14), or long form.  This is done inside model `CPTweet`.
+
+
