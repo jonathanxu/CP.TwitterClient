@@ -59,7 +59,7 @@
     NSMutableAttributedString *attributedName = [[NSMutableAttributedString alloc] initWithString:combined attributes:nil];
     
     // make name bold
-    UIFont *boldFont = [UIFont fontWithName:@"Helvetica-Bold" size:13.0];
+    UIFont *boldFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13.0];
     [attributedName setAttributes:@{NSFontAttributeName:boldFont}
                             range:[combined rangeOfString:name]];
     
