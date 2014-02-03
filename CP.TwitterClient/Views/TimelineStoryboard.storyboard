@@ -63,7 +63,7 @@
                                             <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VGx-vk-rTC">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="VGx-vk-rTC">
                                             <rect key="frame" x="64" y="53" width="246" height="14"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
@@ -97,32 +97,32 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="LEw-Dh-Rae" secondAttribute="trailing" constant="10" id="0CT-lb-ON3"/>
                                         <constraint firstAttribute="trailing" secondItem="dJt-UY-XXs" secondAttribute="trailing" constant="60" id="1LM-YM-t5V"/>
-                                        <constraint firstItem="VGx-vk-rTC" firstAttribute="leading" secondItem="zCn-Cy-Tzl" secondAttribute="trailing" constant="6" id="5Ug-fD-nch"/>
                                         <constraint firstItem="dJt-UY-XXs" firstAttribute="top" secondItem="N7k-xB-Zkq" secondAttribute="bottom" constant="8" id="8DQ-U8-Jbf"/>
                                         <constraint firstItem="mdb-Jq-YOV" firstAttribute="top" secondItem="VGx-vk-rTC" secondAttribute="bottom" constant="8" id="9bu-fT-yN7"/>
+                                        <constraint firstItem="dJt-UY-XXs" firstAttribute="leading" secondItem="KJp-sR-DbO" secondAttribute="leading" constant="64" id="9oZ-jL-fHi"/>
                                         <constraint firstItem="LEw-Dh-Rae" firstAttribute="top" secondItem="N7k-xB-Zkq" secondAttribute="bottom" constant="8" id="D0p-so-Rea"/>
                                         <constraint firstItem="7vx-cr-yYM" firstAttribute="top" secondItem="VGx-vk-rTC" secondAttribute="bottom" constant="8" id="ETb-yO-vtI"/>
-                                        <constraint firstItem="7vx-cr-yYM" firstAttribute="leading" secondItem="zCn-Cy-Tzl" secondAttribute="trailing" constant="6" id="HyN-LS-kvQ"/>
                                         <constraint firstItem="HzS-Ch-30i" firstAttribute="leading" secondItem="7vx-cr-yYM" secondAttribute="trailing" constant="36" id="MlF-El-Egv"/>
                                         <constraint firstAttribute="trailing" secondItem="N7k-xB-Zkq" secondAttribute="trailing" constant="10" id="Phh-PN-Mb5"/>
                                         <constraint firstItem="zCn-Cy-Tzl" firstAttribute="leading" secondItem="KJp-sR-DbO" secondAttribute="leading" constant="10" id="QKD-5o-PRC"/>
                                         <constraint firstItem="2Nv-PD-XRG" firstAttribute="leading" secondItem="KJp-sR-DbO" secondAttribute="leading" constant="42" id="UOj-KE-ETF"/>
                                         <constraint firstItem="HzS-Ch-30i" firstAttribute="top" secondItem="VGx-vk-rTC" secondAttribute="bottom" constant="8" id="ZUc-9T-feG"/>
                                         <constraint firstItem="mdb-Jq-YOV" firstAttribute="leading" secondItem="HzS-Ch-30i" secondAttribute="trailing" constant="36" id="bdn-YS-LeE"/>
-                                        <constraint firstItem="dJt-UY-XXs" firstAttribute="leading" secondItem="zCn-Cy-Tzl" secondAttribute="trailing" constant="6" id="cqf-qD-5B6"/>
                                         <constraint firstAttribute="trailing" secondItem="VGx-vk-rTC" secondAttribute="trailing" constant="10" id="jPH-rT-jG5"/>
                                         <constraint firstItem="2Nv-PD-XRG" firstAttribute="top" secondItem="KJp-sR-DbO" secondAttribute="top" constant="10" id="kgq-J3-Scr"/>
                                         <constraint firstItem="zCn-Cy-Tzl" firstAttribute="top" secondItem="2Nv-PD-XRG" secondAttribute="bottom" constant="8" id="kyc-or-iPD"/>
+                                        <constraint firstItem="VGx-vk-rTC" firstAttribute="leading" secondItem="KJp-sR-DbO" secondAttribute="leading" constant="64" id="q8D-be-nEG"/>
                                         <constraint firstItem="N7k-xB-Zkq" firstAttribute="top" secondItem="KJp-sR-DbO" secondAttribute="top" constant="10" id="qLt-Tm-lxg"/>
                                         <constraint firstItem="VGx-vk-rTC" firstAttribute="top" secondItem="dJt-UY-XXs" secondAttribute="bottom" constant="6" id="ujL-V1-eEA"/>
                                         <constraint firstItem="N7k-xB-Zkq" firstAttribute="leading" secondItem="KJp-sR-DbO" secondAttribute="leading" constant="64" id="xkn-K5-lIM"/>
+                                        <constraint firstItem="7vx-cr-yYM" firstAttribute="leading" secondItem="KJp-sR-DbO" secondAttribute="leading" constant="64" id="z8G-cS-O16"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="retweetByImage" destination="2Nv-PD-XRG" id="8Pm-Ch-gcR"/>
                                     <outlet property="retweetByNameLabel" destination="N7k-xB-Zkq" id="ySB-ik-1k6"/>
-                                    <outlet property="textLabel" destination="VGx-vk-rTC" id="Hqt-sX-1EG"/>
                                     <outlet property="timeLabel" destination="LEw-Dh-Rae" id="dGV-cA-ewv"/>
+                                    <outlet property="tweetContentLabel" destination="VGx-vk-rTC" id="Rd8-xN-Im2"/>
                                     <outlet property="userNameLabel" destination="dJt-UY-XXs" id="qKj-jb-zXH"/>
                                     <outlet property="userProfileImage" destination="zCn-Cy-Tzl" id="OkC-Er-Tv6"/>
                                 </connections>

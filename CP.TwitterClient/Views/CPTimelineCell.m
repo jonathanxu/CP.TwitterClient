@@ -7,6 +7,7 @@
 //
 
 #import "CPTimelineCell.h"
+#import "UIImageView+AFNetworking.h"
 
 @interface CPTimelineCell ()
 // top retweet-by UI elements
@@ -18,8 +19,7 @@
 // time
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 // tweet text content
-@property (weak, nonatomic) IBOutlet UILabel *textLabel;
-
+@property (weak, nonatomic) IBOutlet UILabel *tweetContentLabel;
 @end
 
 @implementation CPTimelineCell
@@ -44,8 +44,9 @@
 
 - (void)setModel:(CPTweet *)tweet
 {
+    [self.userProfileImage setImageWithURL:[NSURL URLWithString:tweet.user__profile_image_url]];
     self.userNameLabel.text = tweet.user__name;
-    self.textLabel.text = tweet.text;
+    self.tweetContentLabel.text = tweet.text;
 }
 
 @end
