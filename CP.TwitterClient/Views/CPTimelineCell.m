@@ -45,8 +45,34 @@
 - (void)setModel:(CPTweet *)tweet
 {
     [self.userProfileImage setImageWithURL:[NSURL URLWithString:tweet.user__profile_image_url]];
-    self.userNameLabel.text = tweet.user__name;
+    
+    self.userNameLabel.attributedText = [self attributedName:tweet.user__name screen_name:tweet.user__screen_name];
+
     self.tweetContentLabel.text = tweet.text;
+}
+
+- (NSAttributedString *)attributedName:(NSString *)name screen_name:(NSString *)screen_name
+{
+    NSString *handle = [NSString stringWithFormat:@"@%@", screen_name];
+    NSString *combined = [name stringByAppendingFormat:@"  %@", handle];
+    
+    NSMutableAttributedString *attributedName = [[NSMutableAttributedString alloc] initWithString:combined attributes:nil];
+    
+    // make name bold
+    UIFont *boldFont = [UIFont fontWithName:@"Helvetica-Bold" size:13.0];
+    [attributedName setAttributes:@{NSFontAttributeName:boldFont}
+                            range:[combined rangeOfString:name]];
+    
+    // change color for handle
+    UIColor *halfBlack = [UIColor colorWithRed:128.0/255.0
+                                         green:128.0/255.0
+                                          blue:128.0/255.0
+                                         alpha:1];
+    // search for screen_name backwards, in case screen name may be a substring of name, or the same as name
+    [attributedName setAttributes:@{NSForegroundColorAttributeName:halfBlack}
+                            range:[combined rangeOfString:handle
+                                                  options:NSBackwardsSearch]];
+    return attributedName;
 }
 
 @end
