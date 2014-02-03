@@ -75,7 +75,11 @@
     static NSString *CellIdentifier = @"TweetCell";
     CPTimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
-    cell.model = [self.tweets tweetAtIndex:indexPath.row];
+    CPTweet *model = [self.tweets tweetAtIndex:indexPath.row];
+    if (indexPath.row % 2 == 0) {
+        model.retweeted_by = @"blah";
+    }
+    cell.model = model;
     
     return cell;
 }

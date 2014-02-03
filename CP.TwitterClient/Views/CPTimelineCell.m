@@ -36,6 +36,8 @@
 {
     _model = model;
     
+    self.retweetByNameLabel.text = self.model.retweeted_by;
+
     [self.userProfileImage setImageWithURL:[NSURL URLWithString:model.user__profile_image_url]];
     
     self.userNameLabel.attributedText = [self attributedName:model.user__name screen_name:model.user__screen_name];
