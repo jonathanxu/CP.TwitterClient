@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[CPDetailViewController viewDidLoad]:CPDetailViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__34-[CPTimelineViewController reload]_block_invoke_2:CPTimelineViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[CPTimelineViewController reload]:CPTimelineViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[CPTimelineTweets init]:CPTimelineTweets.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[CPTweet setTweet:]:CPTweet.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[CPTwitterAPIClient fetch:sinceId:maxId:success:failure:]:CPTwitterAPIClient.m">
+      </ContextState>
+      <ContextState
+         contextName = "__34-[CPTimelineViewController reload]_block_invoke:CPTimelineViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[CPTimelineCell setModel:]:CPTimelineCell.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

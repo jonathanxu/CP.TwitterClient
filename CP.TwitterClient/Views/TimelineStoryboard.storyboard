@@ -112,7 +112,7 @@
                                                 <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                             </accessibility>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="37" id="ySa-0a-dvb"/>
+                                                <constraint firstAttribute="height" constant="37" id="ozT-8O-0KO"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                             <textInputTraits key="textInputTraits" autocorrectionType="no"/>
@@ -141,13 +141,12 @@
                                         <constraint firstItem="2Nv-PD-XRG" firstAttribute="top" secondItem="KJp-sR-DbO" secondAttribute="top" constant="10" id="kgq-J3-Scr"/>
                                         <constraint firstItem="zCn-Cy-Tzl" firstAttribute="top" secondItem="2Nv-PD-XRG" secondAttribute="bottom" constant="8" id="kyc-or-iPD"/>
                                         <constraint firstItem="zCn-Cy-Tzl" firstAttribute="top" secondItem="KJp-sR-DbO" secondAttribute="top" priority="900" constant="10" id="qrG-IT-oxD"/>
-                                        <constraint firstAttribute="bottom" secondItem="px2-yo-G5L" secondAttribute="bottom" constant="34" id="ruv-ya-E9l"/>
                                         <constraint firstItem="N7k-xB-Zkq" firstAttribute="leading" secondItem="KJp-sR-DbO" secondAttribute="leading" constant="64" id="xkn-K5-lIM"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="contentTextView" destination="px2-yo-G5L" id="but-k4-KaO"/>
-                                    <outlet property="contentTextViewHeightConstraint" destination="ySa-0a-dvb" id="SgD-Ve-y0U"/>
+                                    <outlet property="contentTextViewHeightConstraint" destination="ozT-8O-0KO" id="qSW-ww-PBT"/>
                                     <outlet property="favoriteButton" destination="t5G-RI-Hdo" id="knD-sD-MgR"/>
                                     <outlet property="replyButton" destination="SWS-r0-fjK" id="GkT-2e-8oI"/>
                                     <outlet property="retweetButton" destination="fHr-Ac-gDg" id="ZPY-fd-FTd"/>

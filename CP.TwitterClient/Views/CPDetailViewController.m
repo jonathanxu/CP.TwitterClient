@@ -42,6 +42,7 @@
     self.userScreenNameLabel.text = [@"@" stringByAppendingString:self.model.user__screen_name];
     
     self.contentTextView.text = self.model.text;
+    [self.contentTextView setTextContainerInset:UIEdgeInsetsMake(0, 0, 0, 0)];
     CGSize size = [self.contentTextView sizeThatFits:CGSizeMake(self.contentTextView.frame.size.width, FLT_MAX)];
     self.contentTextViewHeightConstraint.constant = size.height;
 }

@@ -46,6 +46,11 @@
     self.contentTextView.text = model.text;
     // remove inset so we could properly calculate tableView:heightForRowAtIndexPath
     [self.contentTextView setTextContainerInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    if (model.viewTextViewHeightCached == 0) {
+        CGSize size = [self.contentTextView sizeThatFits:CGSizeMake(self.contentTextView.frame.size.width, FLT_MAX)];
+        model.viewTextViewHeightCached = size.height;
+    }
+    self.contentTextViewHeightConstraint.constant = model.viewTextViewHeightCached;
     
     self.timeLabel.text = model.created_at_abbreviated;
     

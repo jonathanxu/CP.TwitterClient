@@ -94,11 +94,11 @@ static NSDateFormatter * sVeryShortDateFormatter;
     self.favorited = [[tweet objectForKey:@"favorited"] boolValue];
     
     self.text = [tweet objectForKey:@"text"];
+    self.viewCellHeightCached = 0;
+    self.viewTextViewHeightCached = 0;
 
     self.tweetDate = [[CPTweet getTwitterDateFormatter] dateFromString:[tweet objectForKey:@"created_at"]];
     self.created_at = [[CPTweet getShortDateFormatter] stringFromDate:self.tweetDate];
-    
-    self.viewHeightCached = 0;
 }
 
 @synthesize created_at_abbreviated = _created_at_abbreviated;

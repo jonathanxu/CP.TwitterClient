@@ -88,7 +88,7 @@
 {
     CPTweet *model = [self.tweets tweetAtIndex:indexPath.row];
 
-    if (model.viewHeightCached == 0) {
+    if (model.viewCellHeightCached == 0) {
         // 64 is left margin, 10 is right margin of TextView
         CGFloat width = self.view.frame.size.width - 64 - 10;
 
@@ -100,10 +100,10 @@
                                                 context:nil];
 
         // 125 is default cell height, 37 is default TextView height
-        model.viewHeightCached = 125 + (frame.size.height - 37);
+        model.viewCellHeightCached = 125 + (frame.size.height - 37);
     }
         
-    return model.viewHeightCached;
+    return model.viewCellHeightCached;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

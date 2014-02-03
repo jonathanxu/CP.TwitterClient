@@ -32,6 +32,13 @@ Profile image is rendered asynchronously using UIImageView+AFNetworking.
 
 Time is parsed from Twitter API, and formatted to very short (1h), or short (2/2/14), or long form.  This is done inside model `CPTweet`.
 
+#### Height calculation
+
+- Set UITextView's inset to 0
+- Updated UITextView's height constraint via an IBOutlet
+- Return table cell's height by calculating the offset from default UITextView height, and add to table cell's default height
+- Not using bottom constraint from UITextView to table cell's bottom
+
 #### Touch and Segue
 
 Wire 3 separate touch events for reply, retweet, and faovite. 
