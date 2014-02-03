@@ -10,6 +10,7 @@
 
 @interface CPTweet ()
 @property (strong, nonatomic) NSDictionary *tweet;
+@property (strong, nonatomic) NSDate *tweetDate;
 @end
 
 @implementation CPTweet
@@ -46,6 +47,38 @@
 
 #pragma mark - properties
 
+// cache NSDateFormatter, it is not cheap
+static NSDateFormatter * sTwitterDateFormatter;
++ (NSDateFormatter *)getTwitterDateFormatter
+{
+    if (!sTwitterDateFormatter) {
+        sTwitterDateFormatter = [[NSDateFormatter alloc] init];
+        // Twitter's Date format: @"Mon Feb 03 01:02:57 +0000 2014"
+        [sTwitterDateFormatter setDateFormat:@"EEE MMM dd HH:mm:ss vvvv yyyy"];
+    }
+    return sTwitterDateFormatter;
+}
+static NSDateFormatter * sShortDateFormatter;
++ (NSDateFormatter *)getShortDateFormatter
+{
+    if (!sShortDateFormatter) {
+        sShortDateFormatter = [[NSDateFormatter alloc] init];
+        // Twitter's Date format: @"Mon Feb 03 01:02:57 +0000 2014"
+        [sShortDateFormatter setDateFormat:@"dd/MM/yy HH:mm a"];
+    }
+    return sShortDateFormatter;
+}
+static NSDateFormatter * sVeryShortDateFormatter;
++ (NSDateFormatter *)getVeryShortDateFormatter
+{
+    if (!sVeryShortDateFormatter) {
+        sVeryShortDateFormatter = [[NSDateFormatter alloc] init];
+        // Twitter's Date format: @"Mon Feb 03 01:02:57 +0000 2014"
+        [sVeryShortDateFormatter setDateFormat:@"dd/MM/yy"];
+    }
+    return sVeryShortDateFormatter;
+}
+
 - (void)setTweet:(NSDictionary *)tweet
 {
     _tweet = tweet;
@@ -61,7 +94,29 @@
     self.favorited = [[tweet objectForKey:@"favorited"] boolValue];
     
     self.text = [tweet objectForKey:@"text"];
-    self.created_at = [tweet objectForKey:@"created_at"];
+
+    self.tweetDate = [[CPTweet getTwitterDateFormatter] dateFromString:[tweet objectForKey:@"created_at"]];
+    self.created_at = [[CPTweet getShortDateFormatter] stringFromDate:self.tweetDate];
+}
+
+@synthesize created_at_abbreviated = _created_at_abbreviated;
+
+- (NSString *)created_at_abbreviated
+{
+    NSTimeInterval interval = [self.tweetDate timeIntervalSinceNow];
+    interval = interval * (-1);
+    if (interval < 60.0) {
+        return @"Just now";
+    }
+    else if (interval < 3600.0) {
+        return [[NSString alloc] initWithFormat:@"%dm", (int)round(interval / 60.0)];
+    }
+    else if (interval < 86400.0) {
+        return [[NSString alloc] initWithFormat:@"%dh", (int)round(interval / 3600.0)];
+    }
+    else {
+        return [[CPTweet getVeryShortDateFormatter] stringFromDate:self.tweetDate];
+    }
 }
 
 @end

@@ -49,6 +49,7 @@
     self.userNameLabel.attributedText = [self attributedName:tweet.user__name screen_name:tweet.user__screen_name];
 
     self.tweetContentLabel.text = tweet.text;
+    self.timeLabel.text = tweet.created_at_abbreviated;
 }
 
 - (NSAttributedString *)attributedName:(NSString *)name screen_name:(NSString *)screen_name

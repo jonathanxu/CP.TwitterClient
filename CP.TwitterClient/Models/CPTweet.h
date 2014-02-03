@@ -20,7 +20,8 @@
 @property (nonatomic) BOOL favorited; // by me
 
 @property (strong, nonatomic) NSString *text;
-@property (strong, nonatomic) NSDate *created_at;
+@property (strong, nonatomic) NSString *created_at;
+@property (strong, nonatomic) NSString *created_at_abbreviated;
 
 // disabled initializer
 - (instancetype)init;
