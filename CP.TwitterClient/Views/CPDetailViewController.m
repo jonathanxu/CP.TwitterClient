@@ -32,8 +32,6 @@
         self.retweetedByLabel.text = self.model.retweeted_by;
     }
     else {
-        self.retweetedByImage.hidden = YES;
-        self.retweetedByLabel.hidden = YES;
         [self.retweetedByImage removeFromSuperview];
         [self.retweetedByLabel removeFromSuperview];
     }
