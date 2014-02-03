@@ -34,4 +34,8 @@ Time is parsed from Twitter API, and formatted to very short (1h), or short (2/2
 
 #### Touch and Segue
 
-Wire 3 separate touch events for reply, retweet, and faovite. Use `CPTimelineViewController.tableView:didSelectRowAtIndexPath` for segue into tweet detail view.
+Wire 3 separate touch events for reply, retweet, and faovite. 
+
+Use `CPTimelineViewController.tableView:didSelectRowAtIndexPath` for segue into tweet detail view. This is accomplished with a manual segue, otherwise it would add a segue button to UITableViewCell and mess up layout.
+
+

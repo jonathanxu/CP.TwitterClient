@@ -10,6 +10,7 @@
 #import "CPTimelineTweets.h"
 #import "CPTwitterAPIClient.h"
 #import "CPTimelineCell.h"
+#import "CPDetailViewController.h"
 
 @interface CPTimelineViewController ()
 
@@ -29,6 +30,8 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+
     self.apiClient = [[CPTwitterAPIClient alloc] initWithUser:self.currentUser];
     self.tweets = [[CPTimelineTweets alloc] init];
     if ([self.tweets count] == 0) {
@@ -80,6 +83,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"CPTimelineViewController.tableView:didSelectRowAtIndexPath: %d", indexPath.row);
+    
+    CPTweet *tweet = [self.tweets tweetAtIndex:indexPath.row];
+    [self performSegueWithIdentifier:@"tweetDetailSeque" sender:tweet];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"tweetDetailSeque"])
+    {
+        CPDetailViewController *detailVC = [segue destinationViewController];
+        detailVC.model = (CPTweet *)sender;
+    }
 }
 
 # pragma mark - reload data

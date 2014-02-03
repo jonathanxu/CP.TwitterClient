@@ -30,6 +30,7 @@
 		3E7016FC189E2CD9006A081D /* CPTwitterAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7016FB189E2CD9006A081D /* CPTwitterAPIClient.m */; };
 		3E7016FF189ECC77006A081D /* CPTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7016FE189ECC77006A081D /* CPTweet.m */; };
 		3E701705189F103C006A081D /* CPTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E701704189F103C006A081D /* CPTimelineCell.m */; };
+		3E701713189F7EA3006A081D /* CPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E701712189F7EA3006A081D /* CPDetailViewController.m */; };
 		9A0384B78693400585B1C063 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4755C804DA499DB28064B7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +80,8 @@
 		3E7016FE189ECC77006A081D /* CPTweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPTweet.m; path = Models/CPTweet.m; sourceTree = "<group>"; };
 		3E701703189F103C006A081D /* CPTimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPTimelineCell.h; path = Views/CPTimelineCell.h; sourceTree = "<group>"; };
 		3E701704189F103C006A081D /* CPTimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPTimelineCell.m; path = Views/CPTimelineCell.m; sourceTree = "<group>"; };
+		3E701711189F7EA3006A081D /* CPDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPDetailViewController.h; path = Views/CPDetailViewController.h; sourceTree = "<group>"; };
+		3E701712189F7EA3006A081D /* CPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPDetailViewController.m; path = Views/CPDetailViewController.m; sourceTree = "<group>"; };
 		D3DB3DB23A2F4778B031B0A2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,6 +198,8 @@
 				3E02AC3E189DBBAA0092C4BB /* CPTimelineViewController.m */,
 				3E701703189F103C006A081D /* CPTimelineCell.h */,
 				3E701704189F103C006A081D /* CPTimelineCell.m */,
+				3E701711189F7EA3006A081D /* CPDetailViewController.h */,
+				3E701712189F7EA3006A081D /* CPDetailViewController.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 				3E7016F8189DCF4C006A081D /* CPTimelineTweets.m in Sources */,
 				3E02AC3F189DBBAA0092C4BB /* CPTimelineViewController.m in Sources */,
 				3E701705189F103C006A081D /* CPTimelineCell.m in Sources */,
+				3E701713189F7EA3006A081D /* CPDetailViewController.m in Sources */,
 				3E02AC02189CC3FA0092C4BB /* CPAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

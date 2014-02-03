@@ -153,11 +153,14 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Home" id="jQz-Pf-DSP">
                         <barButtonItem key="leftBarButtonItem" title="Sign Out" id="he2-hG-pJi">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="touchSignOutButton:" destination="vdk-Zh-bsv" id="a9m-sx-4W0"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="New" id="T5y-ft-k37"/>
+                        <barButtonItem key="rightBarButtonItem" title="New" id="T5y-ft-k37">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="BoR-nK-iuI">
                         <autoresizingMask key="autoresizingMask"/>
@@ -165,10 +168,47 @@
                             <action selector="refresh" destination="vdk-Zh-bsv" eventType="valueChanged" id="irH-V2-nao"/>
                         </connections>
                     </refreshControl>
+                    <connections>
+                        <segue destination="wEu-Wz-DAT" kind="push" identifier="tweetDetailSeque" id="9Oh-ur-to9"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yEJ-W5-bYc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138" y="110"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="Wf4-Ku-XlP">
+            <objects>
+                <viewController id="wEu-Wz-DAT" customClass="CPDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yQZ-hQ-EJZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="YFy-S4-iZz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gmY-z3-2Of">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJg-FW-QjH">
+                                <rect key="frame" x="20" y="128" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="fzj-zI-gOL">
+                        <barButtonItem key="rightBarButtonItem" title="Reply" id="UhD-4G-YRZ">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="tweetContentLabel" destination="JJg-FW-QjH" id="jJ3-VK-NWJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XmI-t4-VEH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="596" y="110"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NHa-1T-dTd">
@@ -176,6 +216,10 @@
                 <navigationController storyboardIdentifier="TimelineStoryboard" definesPresentationContext="YES" id="qIv-Xd-Ei2" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Soq-XM-wra">
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.33333333333333331" green="0.67450980392156867" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="vdk-Zh-bsv" kind="relationship" relationship="rootViewController" id="Hvx-uU-LGL"/>

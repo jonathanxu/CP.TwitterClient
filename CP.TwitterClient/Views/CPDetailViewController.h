@@ -1,5 +1,5 @@
 //
-//  CPTweetDetailViewController.h
+//  CPDetailViewController.h
 //  CP.TwitterClient
 //
 //  Created by Jonathan Xu on 2/2/14.
@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CPTweet.h"
 
-@interface CPTweetDetailViewController : UIViewController
-
+@interface CPDetailViewController : UIViewController
+@property (strong, nonatomic) CPTweet *model;
 @end
