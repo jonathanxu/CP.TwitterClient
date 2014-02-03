@@ -84,6 +84,24 @@
     return cell;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CPTweet *model = [self.tweets tweetAtIndex:indexPath.row];
+
+    // 64 is left margin, 10 is right margin of TextView
+    CGFloat width = self.view.frame.size.width - 64 - 10;
+
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue" size:12.0];
+    NSDictionary *attributes = @{NSFontAttributeName: font};
+    CGRect frame = [model.text boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+                                            options:NSStringDrawingUsesLineFragmentOrigin
+                                         attributes:attributes
+                                            context:nil];
+
+    // 125 is default cell height, 37 is default TextView height
+    return 125 + (frame.size.height - 37);
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"CPTimelineViewController.tableView:didSelectRowAtIndexPath: %d", indexPath.row);

@@ -19,7 +19,8 @@
 // time
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 // tweet text content
-@property (weak, nonatomic) IBOutlet UILabel *tweetContentLabel;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentTextViewHeightConstraint;
 // reply, retweet, and favoriate buttons
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
@@ -42,7 +43,10 @@
     
     self.userNameLabel.attributedText = [self attributedName:model.user__name screen_name:model.user__screen_name];
 
-    self.tweetContentLabel.text = model.text;
+    self.contentTextView.text = model.text;
+    // remove inset so we could properly calculate tableView:heightForRowAtIndexPath
+    [self.contentTextView setTextContainerInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    
     self.timeLabel.text = model.created_at_abbreviated;
     
     [self adjustReplyImage];

@@ -15,7 +15,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userScreenNameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *tweetContentLabel;
+@property (weak, nonatomic) IBOutlet UITextView *contentTextView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentTextViewHeightConstraint;
 @end
 
 @implementation CPDetailViewController
@@ -39,8 +40,10 @@
     [self.userProfileImage setImageWithURL:[NSURL URLWithString:self.model.user__profile_image_url]];
     self.userNameLabel.text = self.model.user__name;
     self.userScreenNameLabel.text = [@"@" stringByAppendingString:self.model.user__screen_name];
-    self.tweetContentLabel.text = self.model.text;
     
+    self.contentTextView.text = self.model.text;
+    CGSize size = [self.contentTextView sizeThatFits:CGSizeMake(self.contentTextView.frame.size.width, FLT_MAX)];
+    self.contentTextViewHeightConstraint.constant = size.height;
 }
 
 @end
