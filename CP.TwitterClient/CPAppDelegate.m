@@ -41,9 +41,9 @@
         if (!self.timelineNVC) {
             UIStoryboard *sb = [UIStoryboard storyboardWithName:@"TimelineStoryboard" bundle:nil];
             self.timelineNVC = (UINavigationController *)[sb instantiateInitialViewController];
-            CPTimelineViewController *vc = (CPTimelineViewController *)[self.timelineNVC topViewController];
-            vc.currentUser = self.currentUser;
         }
+        CPTimelineViewController *vc = (CPTimelineViewController *)[self.timelineNVC topViewController];
+        vc.currentUser = self.currentUser;
         self.window.rootViewController = self.timelineNVC;
     }
     else {

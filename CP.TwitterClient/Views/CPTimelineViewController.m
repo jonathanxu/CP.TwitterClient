@@ -33,36 +33,31 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
 
     self.apiClient = [[CPTwitterAPIClient alloc] initWithUser:self.currentUser];
-    self.tweets = [[CPTimelineTweets alloc] init];
-    if ([self.tweets count] == 0) {
-        [self doRefresh];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
     NSLog(@"CPTimelineViewController:viewDidAppear");
+    if (!self.tweets) {
+        self.tweets = [[CPTimelineTweets alloc] init];
+        [self reload];
+    }
 }
 
 #pragma mark - bar buttons
 - (IBAction)touchSignOutButton:(id)sender
 {
     [self.currentUser logout];
-    [self.tweets clear];
+    self.tweets = nil;
 }
 
 #pragma mark - Table view data source
 
 - (IBAction)refresh
 {
-    [self doRefresh];
-    
-}
-
-- (void)doRefresh
-{
     [self reload];
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

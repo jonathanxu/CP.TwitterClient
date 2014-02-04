@@ -37,7 +37,7 @@
             NSLog(@"SimpleAuth.authorize:completion: error, %@", error);
             self.loginErrorLabel.hidden = NO;
         } else {
-            NSLog(@"SimpleAuth.authorize:completion: success, %@", responseObject);
+            NSLog(@"SimpleAuth.authorize:completion: success");
             [self.currentUser loginWithDictionary:responseObject];
         }
     }];

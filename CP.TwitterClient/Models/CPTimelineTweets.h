@@ -11,7 +11,6 @@
 #import "CPTweet.h"
 
 @interface CPTimelineTweets : NSObject
-- (void)clear;
 - (NSUInteger)count;
 - (CPTweet *)tweetAtIndex:(NSUInteger)index;
 - (void)reloadTweets:(NSArray *)tweets;

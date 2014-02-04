@@ -10,5 +10,5 @@
 #import "CPTweet.h"
 
 @interface CPDetailViewController : UIViewController
-@property (strong, nonatomic) CPTweet *model;
+@property (weak, nonatomic) CPTweet *model;
 @end
