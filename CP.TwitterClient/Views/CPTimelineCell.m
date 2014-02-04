@@ -56,8 +56,9 @@
     self.userNameLabel.attributedText = [self attributedName:model.user__name screen_name:model.user__screen_name];
 
     self.contentTextView.text = model.text;
-    // remove inset so we could properly calculate tableView:heightForRowAtIndexPath
-    [self.contentTextView setTextContainerInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    // remove left padding and inset so we could properly calculate tableView:heightForRowAtIndexPath
+    self.contentTextView.textContainerInset = UIEdgeInsetsZero;
+    self.contentTextView.textContainer.lineFragmentPadding = 0;
     if (model.viewTextViewHeightCached == 0) {
         CGSize size = [self.contentTextView sizeThatFits:CGSizeMake(self.contentTextView.frame.size.width, FLT_MAX)];
         model.viewTextViewHeightCached = size.height;

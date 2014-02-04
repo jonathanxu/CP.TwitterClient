@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *userScreenNameLabel;
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentTextViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *createdAtLabel;
 @end
 
 @implementation CPDetailViewController
@@ -43,11 +44,13 @@
     self.userNameLabel.text = self.model.user__name;
     self.userScreenNameLabel.text = [@"@" stringByAppendingString:self.model.user__screen_name];
     
-    self.contentTextView.text = nil;
     self.contentTextView.text = self.model.text;
-    [self.contentTextView setTextContainerInset:UIEdgeInsetsMake(0, 0, 0, 0)];
+    self.contentTextView.textContainer.lineFragmentPadding = 0;
+    self.contentTextView.textContainerInset = UIEdgeInsetsZero;
     CGSize size = [self.contentTextView sizeThatFits:CGSizeMake(self.contentTextView.frame.size.width, FLT_MAX)];
     self.contentTextViewHeightConstraint.constant = size.height;
+    
+    self.createdAtLabel.text = self.model.created_at;
 }
 
 @end

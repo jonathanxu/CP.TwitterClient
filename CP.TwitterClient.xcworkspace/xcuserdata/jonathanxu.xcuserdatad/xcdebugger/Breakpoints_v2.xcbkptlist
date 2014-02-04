@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CP.TwitterClient/Views/CPTimelineCell.m"
-            timestampString = "413181708.203061"
+            timestampString = "413193023.779096"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "-setModel:"
             landmarkType = "5">
          </BreakpointContent>
