@@ -130,6 +130,7 @@
                                         <constraint firstAttribute="bottom" secondItem="SWS-r0-fjK" secondAttribute="bottom" constant="10" id="ISW-Qq-Ccw"/>
                                         <constraint firstItem="zCn-Cy-Tzl" firstAttribute="top" secondItem="dJt-UY-XXs" secondAttribute="top" id="LGz-N7-EY2"/>
                                         <constraint firstItem="t5G-RI-Hdo" firstAttribute="centerY" secondItem="fHr-Ac-gDg" secondAttribute="centerY" id="MrB-pN-sBH"/>
+                                        <constraint firstItem="zCn-Cy-Tzl" firstAttribute="top" secondItem="KJp-sR-DbO" secondAttribute="top" constant="34" id="N5R-Y6-26R"/>
                                         <constraint firstAttribute="trailing" secondItem="N7k-xB-Zkq" secondAttribute="trailing" constant="10" id="Phh-PN-Mb5"/>
                                         <constraint firstItem="zCn-Cy-Tzl" firstAttribute="leading" secondItem="KJp-sR-DbO" secondAttribute="leading" constant="10" id="QKD-5o-PRC"/>
                                         <constraint firstItem="2Nv-PD-XRG" firstAttribute="leading" secondItem="KJp-sR-DbO" secondAttribute="leading" constant="42" id="UOj-KE-ETF"/>
@@ -139,8 +140,6 @@
                                         <constraint firstItem="px2-yo-G5L" firstAttribute="top" secondItem="dJt-UY-XXs" secondAttribute="bottom" constant="3" id="f44-zR-h3q"/>
                                         <constraint firstItem="N7k-xB-Zkq" firstAttribute="bottom" secondItem="2Nv-PD-XRG" secondAttribute="bottom" id="jgZ-G2-eev"/>
                                         <constraint firstItem="2Nv-PD-XRG" firstAttribute="top" secondItem="KJp-sR-DbO" secondAttribute="top" constant="10" id="kgq-J3-Scr"/>
-                                        <constraint firstItem="zCn-Cy-Tzl" firstAttribute="top" secondItem="2Nv-PD-XRG" secondAttribute="bottom" constant="8" id="kyc-or-iPD"/>
-                                        <constraint firstItem="zCn-Cy-Tzl" firstAttribute="top" secondItem="KJp-sR-DbO" secondAttribute="top" priority="900" constant="10" id="qrG-IT-oxD"/>
                                         <constraint firstItem="N7k-xB-Zkq" firstAttribute="leading" secondItem="KJp-sR-DbO" secondAttribute="leading" constant="64" id="xkn-K5-lIM"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -155,6 +154,7 @@
                                     <outlet property="timeLabel" destination="LEw-Dh-Rae" id="dGV-cA-ewv"/>
                                     <outlet property="userNameLabel" destination="dJt-UY-XXs" id="qKj-jb-zXH"/>
                                     <outlet property="userProfileImage" destination="zCn-Cy-Tzl" id="OkC-Er-Tv6"/>
+                                    <outlet property="userProfileImageTopMargin" destination="N5R-Y6-26R" id="4cc-lU-KdA"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

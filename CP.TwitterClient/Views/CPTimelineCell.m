@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *retweetByImage;
 @property (weak, nonatomic) IBOutlet UILabel *retweetByNameLabel;
 // user UI elements
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *userProfileImageTopMargin;
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 // time
@@ -37,7 +38,18 @@
 {
     _model = model;
     
-    self.retweetByNameLabel.text = self.model.retweeted_by;
+    if (self.model.retweeted_by) {
+        self.retweetByImage.hidden = NO;
+        self.retweetByNameLabel.hidden = NO;
+        self.retweetByNameLabel.text = self.model.retweeted_by;
+        self.userProfileImageTopMargin.constant = 34;
+    }
+    else {
+        self.retweetByImage.hidden = YES;
+        self.retweetByNameLabel.hidden = YES;
+        self.retweetByNameLabel.text = nil;
+        self.userProfileImageTopMargin.constant = 10;
+    }
 
     [self.userProfileImage setImageWithURL:[NSURL URLWithString:model.user__profile_image_url]];
     

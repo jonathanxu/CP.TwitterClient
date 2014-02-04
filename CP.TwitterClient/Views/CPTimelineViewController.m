@@ -76,9 +76,6 @@
     CPTimelineCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
 
     CPTweet *model = [self.tweets tweetAtIndex:indexPath.row];
-    if (indexPath.row % 2 == 0) {
-        model.retweeted_by = @"blah";
-    }
     cell.model = model;
     
     return cell;
@@ -101,6 +98,11 @@
 
         // 125 is default cell height, 37 is default TextView height
         model.viewCellHeightCached = 125 + (frame.size.height - 37);
+        
+        if (!model.retweeted_by) {
+            // 34 - 10 = 24 is the difference between having and not having retweet line
+            model.viewCellHeightCached -= 24;
+        }
     }
         
     return model.viewCellHeightCached;
