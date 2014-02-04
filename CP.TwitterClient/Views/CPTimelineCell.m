@@ -80,16 +80,19 @@
     
     // make name bold
     UIFont *boldFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13.0];
-    [attributedName setAttributes:@{NSFontAttributeName:boldFont}
+    [attributedName setAttributes:@{NSFontAttributeName: boldFont}
                             range:[combined rangeOfString:name]];
     
     // change color for handle
+    UIFont *smallerFont = [UIFont fontWithName:@"HelveticaNeue" size:12.0];
     UIColor *halfBlack = [UIColor colorWithRed:128.0/255.0
                                          green:128.0/255.0
                                           blue:128.0/255.0
                                          alpha:1];
     // search for screen_name backwards, in case screen name may be a substring of name, or the same as name
-    [attributedName setAttributes:@{NSForegroundColorAttributeName:halfBlack}
+    [attributedName setAttributes:@{NSForegroundColorAttributeName: halfBlack,
+                                    NSFontAttributeName: smallerFont
+                                   }
                             range:[combined rangeOfString:handle
                                                   options:NSBackwardsSearch]];
     return attributedName;
