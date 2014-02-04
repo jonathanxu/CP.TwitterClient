@@ -12,6 +12,7 @@
 @interface CPDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *retweetedByImage;
 @property (weak, nonatomic) IBOutlet UILabel *retweetedByLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *userProfileImageTopMargin;
 @property (weak, nonatomic) IBOutlet UIImageView *userProfileImage;
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userScreenNameLabel;
@@ -35,6 +36,7 @@
     else {
         [self.retweetedByImage removeFromSuperview];
         [self.retweetedByLabel removeFromSuperview];
+        self.userProfileImageTopMargin.constant = 12;
     }
     
     [self.userProfileImage setImageWithURL:[NSURL URLWithString:self.model.user__profile_image_url]];

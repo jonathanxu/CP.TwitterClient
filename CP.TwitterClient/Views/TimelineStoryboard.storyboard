@@ -251,8 +251,8 @@
                             <constraint firstItem="Zv1-r0-Yhl" firstAttribute="top" secondItem="Zu7-0O-MSr" secondAttribute="bottom" constant="10" id="1v7-aX-Hq4"/>
                             <constraint firstItem="uWY-oI-6M1" firstAttribute="top" secondItem="iQY-na-mFw" secondAttribute="bottom" constant="3" id="6gg-YT-TJ3"/>
                             <constraint firstItem="uWY-oI-6M1" firstAttribute="leading" secondItem="Zu7-0O-MSr" secondAttribute="trailing" constant="8" id="7AO-Nj-UfK"/>
-                            <constraint firstItem="Zu7-0O-MSr" firstAttribute="top" secondItem="QTb-Z4-S3f" secondAttribute="bottom" constant="10" id="CVs-Kb-5dp"/>
                             <constraint firstItem="iQY-na-mFw" firstAttribute="leading" secondItem="Zu7-0O-MSr" secondAttribute="trailing" constant="8" id="LLp-4u-Oew"/>
+                            <constraint firstItem="Zu7-0O-MSr" firstAttribute="top" secondItem="yQZ-hQ-EJZ" secondAttribute="bottom" constant="36" id="ODR-Vm-GXg"/>
                             <constraint firstItem="Zu7-0O-MSr" firstAttribute="leading" secondItem="gmY-z3-2Of" secondAttribute="leading" constant="10" id="P2X-bc-RlF"/>
                             <constraint firstAttribute="trailing" secondItem="uWY-oI-6M1" secondAttribute="trailing" constant="10" id="Tvx-PN-QCr"/>
                             <constraint firstItem="QTb-Z4-S3f" firstAttribute="leading" secondItem="gmY-z3-2Of" secondAttribute="leading" constant="42" id="dvi-Gg-3X3"/>
@@ -260,7 +260,6 @@
                             <constraint firstAttribute="trailing" secondItem="iQY-na-mFw" secondAttribute="trailing" constant="10" id="fZy-p2-BNi"/>
                             <constraint firstAttribute="trailing" secondItem="hQK-dh-S4g" secondAttribute="trailing" constant="10" id="hmp-Od-RzU"/>
                             <constraint firstItem="hQK-dh-S4g" firstAttribute="top" secondItem="yQZ-hQ-EJZ" secondAttribute="bottom" constant="12" id="r7W-5P-FXp"/>
-                            <constraint firstItem="Zu7-0O-MSr" firstAttribute="top" secondItem="yQZ-hQ-EJZ" secondAttribute="bottom" priority="900" constant="10" id="rTO-Ph-xLL"/>
                             <constraint firstItem="QTb-Z4-S3f" firstAttribute="top" secondItem="yQZ-hQ-EJZ" secondAttribute="bottom" constant="10" id="sgh-kW-Bi9"/>
                             <constraint firstItem="Zu7-0O-MSr" firstAttribute="bottom" secondItem="uWY-oI-6M1" secondAttribute="bottom" id="wiA-Xp-sav"/>
                         </constraints>
@@ -277,6 +276,7 @@
                         <outlet property="retweetedByLabel" destination="hQK-dh-S4g" id="2K1-jz-74r"/>
                         <outlet property="userNameLabel" destination="iQY-na-mFw" id="IgY-KZ-E2A"/>
                         <outlet property="userProfileImage" destination="Zu7-0O-MSr" id="alc-Qo-KUK"/>
+                        <outlet property="userProfileImageTopMargin" destination="ODR-Vm-GXg" id="MVO-Sw-cSE"/>
                         <outlet property="userScreenNameLabel" destination="uWY-oI-6M1" id="Hax-De-Fey"/>
                     </connections>
                 </viewController>
