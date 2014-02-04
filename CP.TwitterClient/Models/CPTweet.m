@@ -64,7 +64,7 @@ static NSDateFormatter * sShortDateFormatter;
     if (!sShortDateFormatter) {
         sShortDateFormatter = [[NSDateFormatter alloc] init];
         // Twitter's Date format: @"Mon Feb 03 01:02:57 +0000 2014"
-        [sShortDateFormatter setDateFormat:@"dd/MM/yy HH:mm a"];
+        [sShortDateFormatter setDateFormat:@"MM/dd/yy HH:mm a"];
     }
     return sShortDateFormatter;
 }
