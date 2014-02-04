@@ -124,11 +124,11 @@
 
 - (void)reload
 {
-    [self.apiClient fetch:20
+    [self.apiClient fetch:25
                   sinceId:0
                     maxId:0
                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                      NSLog(@"CPTimelineViewController.reload: success");
+                      NSLog(@"CPTimelineViewController.reload: success \n%@", responseObject);
                       [self.tweets reloadTweets:(NSArray *) responseObject];
                       [self.tableView reloadData];
                       [self.refreshControl endRefreshing];

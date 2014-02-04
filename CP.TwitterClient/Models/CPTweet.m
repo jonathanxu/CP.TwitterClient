@@ -83,12 +83,15 @@ static NSDateFormatter * sVeryShortDateFormatter;
 {
     _tweet = tweet;
 
-    int r = arc4random() % 2;
-    if (r == 0) {
-        self.retweeted_by = @"Test";
+    NSDictionary *userDict = [tweet objectForKey:@"user"];
+    NSDictionary *retweeted_status = [tweet objectForKey:@"retweeted_status"];
+    if (retweeted_status) {
+        self.retweeted_by = [userDict objectForKey:@"name"];
+        // rewrite tweet and userDict
+        tweet = retweeted_status;
+        userDict = (NSDictionary *)[tweet objectForKey:@"user"];
     }
     
-    NSDictionary *userDict = [tweet objectForKey:@"user"];
     self.user__name = [userDict objectForKey:@"name"];
     self.user__screen_name = [userDict objectForKey:@"screen_name"];
     self.user__profile_image_url = [userDict objectForKey:@"profile_image_url"];
