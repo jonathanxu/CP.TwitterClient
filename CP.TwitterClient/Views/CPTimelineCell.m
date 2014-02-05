@@ -41,7 +41,7 @@
     if (self.model.retweeted_by) {
         self.retweetByImage.hidden = NO;
         self.retweetByNameLabel.hidden = NO;
-        self.retweetByNameLabel.text = self.model.retweeted_by;
+        self.retweetByNameLabel.text = [[NSString alloc] initWithFormat:@"%@ retweeted", self.model.retweeted_by];
         self.userProfileImageTopMargin.constant = 34;
     }
     else {

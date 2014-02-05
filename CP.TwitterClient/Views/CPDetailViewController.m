@@ -33,7 +33,7 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
     if (self.model.retweeted_by) {
-        self.retweetedByLabel.text = self.model.retweeted_by;
+        self.retweetedByLabel.text = [[NSString alloc] initWithFormat:@"%@ retweeted", self.model.retweeted_by];
     }
     else {
         [self.retweetedByImage removeFromSuperview];

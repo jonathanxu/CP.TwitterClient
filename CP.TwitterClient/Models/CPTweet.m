@@ -74,7 +74,7 @@ static NSDateFormatter * sVeryShortDateFormatter;
     if (!sVeryShortDateFormatter) {
         sVeryShortDateFormatter = [[NSDateFormatter alloc] init];
         // Twitter's Date format: @"Mon Feb 03 01:02:57 +0000 2014"
-        [sVeryShortDateFormatter setDateFormat:@"dd/MM/yy"];
+        [sVeryShortDateFormatter setDateFormat:@"MM/dd/yy"];
     }
     return sVeryShortDateFormatter;
 }
@@ -123,6 +123,9 @@ static NSDateFormatter * sVeryShortDateFormatter;
     }
     else if (interval < 86400.0) {
         return [[NSString alloc] initWithFormat:@"%dh", (int)round(interval / 3600.0)];
+    }
+    else if (interval < 604800.0) {
+        return [[NSString alloc] initWithFormat:@"%dd", (int)round(interval / 86400.0)];
     }
     else {
         return [[CPTweet getVeryShortDateFormatter] stringFromDate:self.tweetDate];
