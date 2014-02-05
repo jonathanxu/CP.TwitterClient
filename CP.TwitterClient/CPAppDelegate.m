@@ -25,7 +25,6 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
-    self.currentUser = [[CPUser alloc] init];
     [self updateRootVC];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateRootVC) name:UserDidLoginNotification object:nil];
@@ -36,21 +35,18 @@
 
 - (void)updateRootVC
 {
-    if ([self.currentUser isLoggedIn]) {
+    if ([[CPUser sharedInstance] isLoggedIn]) {
         NSLog(@"CPAppDelegate.application:didFinishLaunchingWithOptions: user is logged in");
         if (!self.timelineNVC) {
             UIStoryboard *sb = [UIStoryboard storyboardWithName:@"TimelineStoryboard" bundle:nil];
             self.timelineNVC = (UINavigationController *)[sb instantiateInitialViewController];
         }
-        CPTimelineViewController *vc = (CPTimelineViewController *)[self.timelineNVC topViewController];
-        vc.currentUser = self.currentUser;
         self.window.rootViewController = self.timelineNVC;
     }
     else {
         NSLog(@"CPAppDelegate.application:didFinishLaunchingWithOptions: user is not logged in");
         if (!self.launchVC) {
             self.launchVC = [[CPLaunchViewController alloc] init];
-            self.launchVC.currentUser = self.currentUser;
         }
         self.window.rootViewController = self.launchVC;
     }

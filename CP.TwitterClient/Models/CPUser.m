@@ -23,6 +23,17 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPUser";
 
 @implementation CPUser
 
++ (CPUser *)sharedInstance
+{
+    static dispatch_once_t once;
+    static CPUser *instance;
+    dispatch_once(&once, ^{
+        instance = [[CPUser alloc] init];
+        [instance load];
+    });
+    return instance;
+}
+
 #pragma mark - auth attributes, and persistence
 
 @synthesize authAttributes = _authAttributes;
@@ -69,17 +80,6 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPUser";
         NSLog(@"CPUser.persist: failure");
     }
     return retVal;
-}
-
-#pragma mark - init
-
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self load];
-    }
-    return self;
 }
 
 #pragma mark - login, logout

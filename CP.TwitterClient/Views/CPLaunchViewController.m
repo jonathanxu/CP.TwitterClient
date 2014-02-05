@@ -38,7 +38,7 @@
             self.loginErrorLabel.hidden = NO;
         } else {
             NSLog(@"SimpleAuth.authorize:completion: success");
-            [self.currentUser loginWithDictionary:responseObject];
+            [[CPUser sharedInstance]loginWithDictionary:responseObject];
         }
     }];
 }

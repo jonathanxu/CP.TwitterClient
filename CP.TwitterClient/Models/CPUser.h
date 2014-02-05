@@ -13,6 +13,8 @@ extern NSString *const UserDidLogoutNotification;
 
 @interface CPUser : NSObject
 
++ (CPUser *)sharedInstance;
+
 @property (strong, nonatomic) NSString *accessToken;
 @property (strong, nonatomic) NSString *accessTokenSecret;
 

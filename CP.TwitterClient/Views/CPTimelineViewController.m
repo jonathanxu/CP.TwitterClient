@@ -22,32 +22,37 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"CPTimelineViewController.viewDidLoad");
 
     self.clearsSelectionOnViewWillAppear = NO;
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-
-    if (!self.tweets) {
-        self.tweets = [[CPTimelineTweets alloc] init];
-        [self reload];
-    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
-    // http://stackoverflow.com/questions/3747842/reload-uitableview-when-navigating-back
-    // refresh selected row, useful for popping the detail view out, and back to timeline view
-    NSIndexPath *selectedRowIndexPath = [self.tableView indexPathForSelectedRow];
-    if (selectedRowIndexPath) {
-        [self.tableView reloadRowsAtIndexPaths:@[selectedRowIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+
+    NSLog(@"CPTimelineViewController.viewWillAppear");
+
+    if (!self.tweets) {
+        self.tweets = [[CPTimelineTweets alloc] init];
+        [self reload];
+    }
+    else {
+        // http://stackoverflow.com/questions/3747842/reload-uitableview-when-navigating-back
+        // refresh selected row, useful for popping the detail view out, and back to timeline view
+        NSIndexPath *selectedRowIndexPath = [self.tableView indexPathForSelectedRow];
+        if (selectedRowIndexPath) {
+            [self.tableView reloadRowsAtIndexPaths:@[selectedRowIndexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }
     }
 }
 
 #pragma mark - bar buttons
 - (IBAction)touchSignOutButton:(id)sender
 {
-    [self.currentUser logout];
+    [[CPUser sharedInstance] logout];
     self.tweets = nil;
 }
 

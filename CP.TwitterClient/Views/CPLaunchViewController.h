@@ -10,5 +10,4 @@
 #import "CPUser.h"
 
 @interface CPLaunchViewController : UIViewController
-@property (weak, nonatomic) CPUser *currentUser;
 @end
