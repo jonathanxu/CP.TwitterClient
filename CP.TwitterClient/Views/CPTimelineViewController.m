@@ -11,6 +11,7 @@
 #import "CPTwitterAPIClient.h"
 #import "CPTimelineCell.h"
 #import "CPDetailViewController.h"
+#import "CPComposeViewController.h"
 
 @interface CPTimelineViewController ()
 @property (strong, nonatomic) CPTimelineTweets *tweets;
@@ -48,6 +49,14 @@
 {
     [self.currentUser logout];
     self.tweets = nil;
+}
+
+- (IBAction)touchNew:(id)sender
+{
+    CPComposeViewController *composeVC = [[CPComposeViewController alloc] init];
+    composeVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    // TODO: set delegate
+    [self presentViewController:composeVC animated:YES completion:nil];
 }
 
 #pragma mark - Table view data source

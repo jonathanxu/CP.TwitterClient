@@ -31,6 +31,8 @@
 		3E7016FF189ECC77006A081D /* CPTweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7016FE189ECC77006A081D /* CPTweet.m */; };
 		3E701705189F103C006A081D /* CPTimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E701704189F103C006A081D /* CPTimelineCell.m */; };
 		3E701713189F7EA3006A081D /* CPDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E701712189F7EA3006A081D /* CPDetailViewController.m */; };
+		3E7E1B0918A2D2270064EC4E /* CPComposeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E7E1B0718A2D2270064EC4E /* CPComposeViewController.m */; };
+		3E7E1B0A18A2D2270064EC4E /* CPComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7E1B0818A2D2270064EC4E /* CPComposeViewController.xib */; };
 		9A0384B78693400585B1C063 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4755C804DA499DB28064B7 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,9 @@
 		3E701704189F103C006A081D /* CPTimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPTimelineCell.m; path = Views/CPTimelineCell.m; sourceTree = "<group>"; };
 		3E701711189F7EA3006A081D /* CPDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPDetailViewController.h; path = Views/CPDetailViewController.h; sourceTree = "<group>"; };
 		3E701712189F7EA3006A081D /* CPDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPDetailViewController.m; path = Views/CPDetailViewController.m; sourceTree = "<group>"; };
+		3E7E1B0618A2D2270064EC4E /* CPComposeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPComposeViewController.h; path = Views/CPComposeViewController.h; sourceTree = "<group>"; };
+		3E7E1B0718A2D2270064EC4E /* CPComposeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPComposeViewController.m; path = Views/CPComposeViewController.m; sourceTree = "<group>"; };
+		3E7E1B0818A2D2270064EC4E /* CPComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CPComposeViewController.xib; path = Views/CPComposeViewController.xib; sourceTree = "<group>"; };
 		D3DB3DB23A2F4778B031B0A2 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +205,9 @@
 				3E701704189F103C006A081D /* CPTimelineCell.m */,
 				3E701711189F7EA3006A081D /* CPDetailViewController.h */,
 				3E701712189F7EA3006A081D /* CPDetailViewController.m */,
+				3E7E1B0618A2D2270064EC4E /* CPComposeViewController.h */,
+				3E7E1B0718A2D2270064EC4E /* CPComposeViewController.m */,
+				3E7E1B0818A2D2270064EC4E /* CPComposeViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -308,6 +316,7 @@
 				3E02AC21189CC5C30092C4BB /* README.md in Resources */,
 				3E02AC3C189DB8C10092C4BB /* TimelineStoryboard.storyboard in Resources */,
 				3E02ABFC189CC3FA0092C4BB /* InfoPlist.strings in Resources */,
+				3E7E1B0A18A2D2270064EC4E /* CPComposeViewController.xib in Resources */,
 				3E02AC23189CC5D00092C4BB /* Podfile in Resources */,
 				3E02AC04189CC3FA0092C4BB /* Images.xcassets in Resources */,
 			);
@@ -370,6 +379,7 @@
 				3E02AC3F189DBBAA0092C4BB /* CPTimelineViewController.m in Sources */,
 				3E701705189F103C006A081D /* CPTimelineCell.m in Sources */,
 				3E701713189F7EA3006A081D /* CPDetailViewController.m in Sources */,
+				3E7E1B0918A2D2270064EC4E /* CPComposeViewController.m in Sources */,
 				3E02AC02189CC3FA0092C4BB /* CPAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
