@@ -45,6 +45,8 @@ Wire 3 separate touch events for reply, retweet, and faovite.
 
 Use `CPTimelineViewController.tableView:didSelectRowAtIndexPath` for segue into tweet detail view. This is accomplished with a manual segue, otherwise it would add a segue button to UITableViewCell and mess up layout.
 
+When tweet detail view is popped from the navigation controller, and timeline view is presented, the app will use `viewWillAppear` to fresh current selected row, in case button states have changed in the detail view.
+
 ### Retweet and Favorite
 
 - Retweet and Favorite are handled in model (`CPTweet`) with help of `CPTwitterAPIClient`. 
