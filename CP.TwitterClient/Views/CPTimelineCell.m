@@ -67,9 +67,9 @@
     
     self.timeLabel.text = model.created_at_abbreviated;
     
-    [self adjustReplyImage];
-    [self adjustRetweetImage];
-    [self adjustFavoriteImage];
+    [self adjustButton:self.replyButton imageName:@"reply" onState:NO];
+    [self adjustButton:self.retweetButton imageName:@"retweet" onState:self.model.retweeted];
+    [self adjustButton:self.favoriteButton imageName:@"favorite" onState:self.model.favorited];
 }
 
 - (NSAttributedString *)attributedName:(NSString *)name screen_name:(NSString *)screen_name
@@ -99,32 +99,16 @@
     return attributedName;
 }
 
-- (void)adjustReplyImage
+- (void)adjustButton:(UIButton *)button
+           imageName:(NSString *)imageName
+             onState:(BOOL)onState
 {
-    [self.replyButton setTitle:@"" forState:UIControlStateNormal];
-    [self.replyButton setBackgroundImage:[UIImage imageNamed:@"reply"] forState:UIControlStateNormal];
-}
-
-- (void)adjustRetweetImage
-{
-    [self.retweetButton setTitle:@"" forState:UIControlStateNormal];
-    if (self.model.retweeted) {
-        [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet_on"] forState:UIControlStateNormal];
+    [button setTitle:nil forState:UIControlStateNormal];
+    NSMutableString *imageNameSelected = [[NSMutableString alloc] initWithString:imageName];
+    if (onState) {
+        [imageNameSelected appendString:@"_on"];
     }
-    else {
-        [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet"] forState:UIControlStateNormal];
-    }
-}
-
-- (void)adjustFavoriteImage
-{
-    [self.favoriteButton setTitle:@"" forState:UIControlStateNormal];
-    if (self.model.favorited) {
-        [self.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favorite_on"] forState:UIControlStateNormal];
-    }
-    else {
-        [self.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favorite"] forState:UIControlStateNormal];
-    }
+    [button setBackgroundImage:[UIImage imageNamed:imageNameSelected] forState:UIControlStateNormal];
 }
 
 #pragma mark - touch reply, retweet, favorite
