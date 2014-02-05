@@ -22,19 +22,24 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
+    self.clearsSelectionOnViewWillAppear = NO;
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-}
 
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    NSLog(@"CPTimelineViewController:viewDidAppear");
     if (!self.tweets) {
         self.tweets = [[CPTimelineTweets alloc] init];
         [self reload];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    // http://stackoverflow.com/questions/3747842/reload-uitableview-when-navigating-back
+    // refresh selected row, useful for popping the detail view out, and back to timeline view
+    NSIndexPath *selectedRowIndexPath = [self.tableView indexPathForSelectedRow];
+    if (selectedRowIndexPath) {
+        [self.tableView reloadRowsAtIndexPaths:@[selectedRowIndexPath] withRowAnimation:UITableViewRowAnimationNone];
     }
 }
 
