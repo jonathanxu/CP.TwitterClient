@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *contentTextView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentTextViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *createdAtLabel;
+@property (weak, nonatomic) IBOutlet UILabel *retweetAndFavoriteStatsLabel;
 @end
 
 @implementation CPDetailViewController
@@ -51,6 +52,34 @@
     self.contentTextViewHeightConstraint.constant = size.height;
     
     self.createdAtLabel.text = self.model.created_at;
+    
+    self.retweetAndFavoriteStatsLabel.attributedText = [self attributedStatusWithRetweetCount:self.model.retweet_count favoriteCount:self.model.favorite_count];
+}
+
+- (NSAttributedString *)attributedStatusWithRetweetCount:(NSUInteger)retweetCount
+                                           favoriteCount:(NSUInteger)favoriteCount
+{
+    NSMutableAttributedString *attributedStatus = [[NSMutableAttributedString alloc] init];
+    
+    UIFont *boldFont = [UIFont fontWithName:@"HelveticaNeue-Bold" size:12.0];
+    NSDictionary *attributeDict = @{NSFontAttributeName: boldFont,
+                                    NSForegroundColorAttributeName:[UIColor blackColor]};
+    
+    NSString *retweetCountString = [[NSString alloc] initWithFormat:@"%d", retweetCount];
+    NSAttributedString *retweetCountAttributedString = [[NSAttributedString alloc] initWithString:retweetCountString attributes:attributeDict];
+    
+    [attributedStatus appendAttributedString:retweetCountAttributedString];
+    
+    [attributedStatus appendAttributedString:[[NSAttributedString alloc] initWithString:@" RETWEETS     "]];
+
+    NSString *favoriteCountString = [[NSString alloc] initWithFormat:@"%d", favoriteCount];
+    NSAttributedString *favoriteCountAttributedString = [[NSAttributedString alloc] initWithString:favoriteCountString attributes:attributeDict];
+    
+    [attributedStatus appendAttributedString:favoriteCountAttributedString];
+
+    [attributedStatus appendAttributedString:[[NSAttributedString alloc] initWithString:@" FAVORITES"]];
+
+    return attributedStatus;
 }
 
 @end

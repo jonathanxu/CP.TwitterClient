@@ -116,7 +116,7 @@ static NSDateFormatter * sVeryShortDateFormatter;
     NSTimeInterval interval = [self.tweetDate timeIntervalSinceNow];
     interval = interval * (-1);
     if (interval < 60.0) {
-        return @"Just now";
+        return @"now";
     }
     else if (interval < 3600.0) {
         return [[NSString alloc] initWithFormat:@"%dm", (int)round(interval / 60.0)];
