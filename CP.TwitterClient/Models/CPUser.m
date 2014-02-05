@@ -43,19 +43,21 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPUser";
     if (![_authAttributes isEqualToDictionary:authAttributes]) {
         NSLog(@"CPUser.setAttributes: changed");
         _authAttributes = authAttributes;
-        NSDictionary *credentials = [authAttributes objectForKey:@"credentials"];
-        if (credentials) {
+        
+        if (authAttributes) {
+            NSDictionary *credentials = [authAttributes objectForKey:@"credentials"];
             self.accessToken = [credentials objectForKey:@"token"];
             self.accessTokenSecret = [credentials objectForKey:@"secret"];
+            
+            CPTwitterAPIClient *apiClient = [CPTwitterAPIClient sharedInstance];
+            [apiClient setAccessToken:self.accessToken
+                               secret:self.accessTokenSecret];
+            
+            NSDictionary *info = [authAttributes objectForKey:@"info"];
+            self.name = [info objectForKey:@"name"];
+            self.screenName = [info objectForKey:@"nickname"];
+            self.profileImageUrl = [info objectForKey:@"image"];
         }
-        else {
-            self.accessToken = nil;
-            self.accessTokenSecret = nil;
-        }
-        
-        CPTwitterAPIClient *apiClient = [CPTwitterAPIClient sharedInstance];
-        [apiClient setAccessToken:self.accessToken
-                           secret:self.accessTokenSecret];
     }
 }
 

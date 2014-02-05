@@ -18,6 +18,10 @@ extern NSString *const UserDidLogoutNotification;
 @property (strong, nonatomic) NSString *accessToken;
 @property (strong, nonatomic) NSString *accessTokenSecret;
 
+@property (strong, nonatomic) NSString *name;
+@property (strong, nonatomic) NSString *screenName;
+@property (strong, nonatomic) NSString *profileImageUrl;
+
 - (void)loginWithDictionary:(NSDictionary *)dictionary;
 - (BOOL)isLoggedIn;
 - (void)logout;

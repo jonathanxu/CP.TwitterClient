@@ -6,6 +6,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CPComposeViewController">
             <connections>
+                <outlet property="myImage" destination="tOP-fc-rEW" id="uOe-7l-2jv"/>
+                <outlet property="myNameLabel" destination="jnl-OB-jov" id="MbO-jH-oWi"/>
+                <outlet property="myScreenNameLabel" destination="agW-kY-wJQ" id="OKe-l1-fXP"/>
                 <outlet property="navigationBar" destination="A5x-U2-Vb6" id="TdQ-Bh-m22"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -36,12 +39,42 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tOP-fc-rEW">
+                    <rect key="frame" x="12" y="74" width="48" height="48"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="S5L-Aa-u03"/>
+                        <constraint firstAttribute="width" constant="48" id="Wha-iC-lNq"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnl-OB-jov">
+                    <rect key="frame" x="68" y="74" width="242" height="17"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agW-kY-wJQ">
+                    <rect key="frame" x="68" y="97" width="242" height="16"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                    <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="A5x-U2-Vb6" secondAttribute="trailing" id="55b-wq-znX"/>
+                <constraint firstAttribute="trailing" secondItem="agW-kY-wJQ" secondAttribute="trailing" constant="10" id="Agy-DN-e7s"/>
                 <constraint firstItem="A5x-U2-Vb6" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="OoM-vf-hjK"/>
+                <constraint firstItem="agW-kY-wJQ" firstAttribute="top" secondItem="jnl-OB-jov" secondAttribute="bottom" constant="6" id="P3Q-no-JUM"/>
+                <constraint firstItem="tOP-fc-rEW" firstAttribute="top" secondItem="jnl-OB-jov" secondAttribute="top" id="Rgu-B8-7CV"/>
+                <constraint firstItem="tOP-fc-rEW" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="12" id="XHX-KM-9bH"/>
+                <constraint firstItem="agW-kY-wJQ" firstAttribute="leading" secondItem="tOP-fc-rEW" secondAttribute="trailing" constant="8" id="bMy-fu-Hsg"/>
+                <constraint firstAttribute="trailing" secondItem="jnl-OB-jov" secondAttribute="trailing" constant="10" id="kVo-3p-otg"/>
+                <constraint firstItem="jnl-OB-jov" firstAttribute="leading" secondItem="tOP-fc-rEW" secondAttribute="trailing" constant="8" id="nck-zk-s4Y"/>
                 <constraint firstItem="A5x-U2-Vb6" firstAttribute="top" secondItem="1" secondAttribute="top" id="rUk-Im-Pj5"/>
+                <constraint firstItem="tOP-fc-rEW" firstAttribute="top" secondItem="A5x-U2-Vb6" secondAttribute="bottom" constant="10" id="soA-9b-mOO"/>
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
