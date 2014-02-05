@@ -7,6 +7,7 @@
 //
 
 #import "CPTweet.h"
+#import "CPTwitterAPIClient.h"
 
 @interface CPTweet ()
 @property (strong, nonatomic) NSDictionary *tweet;
@@ -92,6 +93,8 @@ static NSDateFormatter * sVeryShortDateFormatter;
         userDict = (NSDictionary *)[tweet objectForKey:@"user"];
     }
     
+    self.tweetId = [[tweet objectForKey:@"id"] longLongValue];
+    
     self.user__name = [userDict objectForKey:@"name"];
     self.user__screen_name = [userDict objectForKey:@"screen_name"];
     self.user__profile_image_url = [userDict objectForKey:@"profile_image_url"];
@@ -130,6 +133,27 @@ static NSDateFormatter * sVeryShortDateFormatter;
     else {
         return [[CPTweet getVeryShortDateFormatter] stringFromDate:self.tweetDate];
     }
+}
+
+#pragma mark - actions
+
+- (BOOL)toggleFavorite
+{
+    CPTwitterAPIClient *apiClient = [CPTwitterAPIClient sharedInstance];
+    
+    if (self.favorited) {
+        // action: unfavorite
+        self.favorite_count--;
+        [apiClient unfavorite:self.tweetId];
+    }
+    else {
+        // action: favorite
+        self.favorite_count++;
+        [apiClient favorite:self.tweetId];
+    }
+    
+    self.favorited = !self.favorited;
+    return self.favorited;
 }
 
 @end

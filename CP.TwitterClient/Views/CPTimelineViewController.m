@@ -13,12 +13,7 @@
 #import "CPDetailViewController.h"
 
 @interface CPTimelineViewController ()
-
 @property (strong, nonatomic) CPTimelineTweets *tweets;
-@property (strong, nonatomic) CPTwitterAPIClient *apiClient;
-
-- (void)reload;
-
 @end
 
 @implementation CPTimelineViewController
@@ -31,8 +26,6 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-
-    self.apiClient = [[CPTwitterAPIClient alloc] initWithUser:self.currentUser];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -124,18 +117,19 @@
 
 - (void)reload
 {
-    [self.apiClient fetch:25
-                  sinceId:0
-                    maxId:0
-                  success:^(AFHTTPRequestOperation *operation, id responseObject) {
-                      NSLog(@"CPTimelineViewController.reload: success");
-                      [self.tweets reloadTweets:(NSArray *) responseObject];
-                      [self.tableView reloadData];
-                      [self.refreshControl endRefreshing];
-                  }
-                  failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                      NSLog(@"CPTimelineViewController.reload: failure. %@", error);
-                  }
+    CPTwitterAPIClient *apiClient = [CPTwitterAPIClient sharedInstance];
+    [apiClient fetch:20
+             sinceId:0
+               maxId:0
+             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 NSLog(@"CPTimelineViewController.reload: success");
+                 [self.tweets reloadTweets:(NSArray *) responseObject];
+                 [self.tableView reloadData];
+                 [self.refreshControl endRefreshing];
+             }
+             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 NSLog(@"CPTimelineViewController.reload: failure. %@", error);
+             }
      ];
 }
 

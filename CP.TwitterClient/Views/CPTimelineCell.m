@@ -126,6 +126,8 @@
 - (IBAction)touchFavorite
 {
     NSLog(@"CPTimelineCell.touchFavorite");
+    BOOL favorited = [self.model toggleFavorite];
+    [self adjustButton:self.favoriteButton imageName:@"favorite" onState:favorited];
 }
 
 @end

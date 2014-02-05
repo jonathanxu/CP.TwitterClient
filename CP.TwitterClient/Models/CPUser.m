@@ -7,6 +7,7 @@
 //
 
 #import "CPUser.h"
+#import "CPTwitterAPIClient.h"
 
 NSString *const UserDidLoginNotification = @"UserDidLoginNotification";
 NSString *const UserDidLogoutNotification = @"UserDidLogoutNotification";
@@ -40,6 +41,10 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPUser";
             self.accessToken = nil;
             self.accessTokenSecret = nil;
         }
+        
+        CPTwitterAPIClient *apiClient = [CPTwitterAPIClient sharedInstance];
+        [apiClient setAccessToken:self.accessToken
+                           secret:self.accessTokenSecret];
     }
 }
 

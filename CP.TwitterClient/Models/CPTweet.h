@@ -10,6 +10,8 @@
 
 @interface CPTweet : NSObject <NSCoding>
 
+@property (nonatomic) long long tweetId;
+
 @property (strong, nonatomic) NSString *retweeted_by;
 
 @property (strong, nonatomic) NSString *user__name;
@@ -32,5 +34,10 @@
 - (instancetype)init;
 // default initializer
 - (instancetype)initWithDictionary:(NSDictionary *)tweet;
+
+// actions
+
+// returns if tweet is favorited or not, AFTER this action
+- (BOOL)toggleFavorite;
 
 @end

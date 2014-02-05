@@ -11,27 +11,54 @@
 
 static NSString *const kTwitterAPIHOST = @"api.twitter.com";
 static NSString *const kTwitterAPITimeline = @"/1.1/statuses/home_timeline.json";
+static NSString *const kTwitterAPIFavorite = @"/1.1/favorites/create.json";
+static NSString *const kTwitterAPIUnfavorite = @"/1.1/favorites/destroy.json";
 static NSString *const kTwitterConsumerKey = @"ans9wMG7I4gicfyaVf7Mkw";
 static NSString *const kTwitterConsumerSecret = @"UtC1DWiw4CCYAuHXFEMXfybmYLjq8b753Kmp7pE4OOA";
 
 @interface CPTwitterAPIClient ()
-@property (weak, nonatomic) CPUser *user;
+@property (strong, nonatomic) NSString *accessToken;
+@property (strong, nonatomic) NSString *accessTokenSecret;
 @end
 
 @implementation CPTwitterAPIClient
 
-- (instancetype)init
++ (CPTwitterAPIClient *)sharedInstance
 {
-    return nil;
+    static dispatch_once_t once;
+    static CPTwitterAPIClient *instance;
+    dispatch_once(&once, ^{
+        instance = [[CPTwitterAPIClient alloc] init];
+    });
+    return instance;
 }
 
-- (instancetype)initWithUser:(CPUser *)user
+- (void)setAccessToken:(NSString *)accessToken secret:(NSString *)secret
 {
-    self = [super init];
-    if (self) {
-        self.user = user;
-    }
-    return self;
+    self.accessToken = [accessToken copy];
+    self.accessTokenSecret = [secret copy];
+}
+
+- (void)sendRequestForPath:(NSString *)path
+                    method:(NSString *)method
+                    params:(NSDictionary *)params
+                   success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+                   failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    NSURLRequest *request = [GCOAuth URLRequestForPath:path
+                                            HTTPMethod:method
+                                            parameters:params
+                                                scheme:@"https"
+                                                  host:kTwitterAPIHOST
+                                           consumerKey:kTwitterConsumerKey
+                                        consumerSecret:kTwitterConsumerSecret
+                                           accessToken:self.accessToken
+                                           tokenSecret:self.accessTokenSecret];
+    
+    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    op.responseSerializer = [AFJSONResponseSerializer serializer];
+    [op setCompletionBlockWithSuccess:success failure:failure];
+    [[NSOperationQueue mainQueue] addOperation:op];
 }
 
 - (void)fetch:(NSUInteger)count
@@ -49,20 +76,33 @@ static NSString *const kTwitterConsumerSecret = @"UtC1DWiw4CCYAuHXFEMXfybmYLjq8b
         [params setObject:[NSString stringWithFormat:@"%d", maxId] forKey:@"max_id"];
     }
 
-    NSURLRequest *request = [GCOAuth URLRequestForPath:kTwitterAPITimeline
-                                            HTTPMethod:@"GET"
-                                            parameters:params
-                                                scheme:@"https"
-                                                  host:kTwitterAPIHOST
-                                           consumerKey:kTwitterConsumerKey
-                                        consumerSecret:kTwitterConsumerSecret
-                                           accessToken:self.user.accessToken
-                                           tokenSecret:self.user.accessTokenSecret];
+    [self sendRequestForPath:kTwitterAPITimeline
+                      method:@"GET"
+                      params:params
+                     success:success
+                     failure:failure];
+}
+
+- (void)favorite:(long long)tweetId
+{
+    NSDictionary *params = @{@"id": [[NSString alloc] initWithFormat:@"%lld", tweetId]};
     
-    AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-    op.responseSerializer = [AFJSONResponseSerializer serializer];
-    [op setCompletionBlockWithSuccess:success failure:failure];
-    [[NSOperationQueue mainQueue] addOperation:op];
+    [self sendRequestForPath:kTwitterAPIFavorite
+                      method:@"POST"
+                          params:params
+                         success:nil
+                         failure:nil];
+}
+
+- (void)unfavorite:(long long)tweetId
+{
+    NSDictionary *params = @{@"id": [[NSString alloc] initWithFormat:@"%lld", tweetId]};
+    
+    [self sendRequestForPath:kTwitterAPIUnfavorite
+                      method:@"POST"
+                      params:params
+                     success:nil
+                     failure:nil];
 }
 
 @end

@@ -11,15 +11,18 @@
 #import "CPUser.h"
 
 @interface CPTwitterAPIClient : NSObject
-// disabled
-- (instancetype)init;
-// default initializer
-- (instancetype)initWithUser:(CPUser *)user;
+
++ (CPTwitterAPIClient *)sharedInstance;
+
+- (void)setAccessToken:(NSString *)accessToken secret:(NSString *)secret;
 
 - (void)fetch:(NSUInteger)count
       sinceId:(NSUInteger)sinceId
         maxId:(NSUInteger)maxId
       success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+- (void)favorite:(long long)tweetId;
+- (void)unfavorite:(long long)tweetId;
 
 @end
