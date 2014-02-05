@@ -20,6 +20,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *contentTextViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UILabel *createdAtLabel;
 @property (weak, nonatomic) IBOutlet UILabel *retweetAndFavoriteStatsLabel;
+@property (weak, nonatomic) IBOutlet UIButton *replyButton;
+@property (weak, nonatomic) IBOutlet UIButton *retweetButton;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
 @end
 
 @implementation CPDetailViewController
@@ -54,6 +57,10 @@
     self.createdAtLabel.text = self.model.created_at;
     
     self.retweetAndFavoriteStatsLabel.attributedText = [self attributedStatusWithRetweetCount:self.model.retweet_count favoriteCount:self.model.favorite_count];
+    
+    [self adjustButton:self.replyButton imageName:@"reply" onState:NO];
+    [self adjustButton:self.retweetButton imageName:@"retweet" onState:self.model.retweeted];
+    [self adjustButton:self.favoriteButton imageName:@"favorite" onState:self.model.favorited];
 }
 
 - (NSAttributedString *)attributedStatusWithRetweetCount:(NSUInteger)retweetCount
@@ -80,6 +87,39 @@
     [attributedStatus appendAttributedString:[[NSAttributedString alloc] initWithString:@" FAVORITES"]];
 
     return attributedStatus;
+}
+
+- (void)adjustButton:(UIButton *)button
+           imageName:(NSString *)imageName
+             onState:(BOOL)onState
+{
+    [button setTitle:nil forState:UIControlStateNormal];
+    NSMutableString *imageNameSelected = [[NSMutableString alloc] initWithString:imageName];
+    if (onState) {
+        [imageNameSelected appendString:@"_on"];
+    }
+    [button setBackgroundImage:[UIImage imageNamed:imageNameSelected] forState:UIControlStateNormal];
+}
+
+#pragma mark - actions
+
+- (IBAction)touchReply
+{
+    NSLog(@"CPDetailViewController.touchReply");
+}
+
+- (IBAction)touchRetweet
+{
+    NSLog(@"CPDetailViewController.touchRetweet");
+    BOOL retweeted = [self.model toggleRetweet];
+    [self adjustButton:self.retweetButton imageName:@"retweet" onState:retweeted];
+}
+
+- (IBAction)touchFavorite
+{
+    NSLog(@"CPDetailViewController.touchFavorite");
+    BOOL favorited = [self.model toggleFavorite];
+    [self adjustButton:self.favoriteButton imageName:@"favorite" onState:favorited];
 }
 
 @end
