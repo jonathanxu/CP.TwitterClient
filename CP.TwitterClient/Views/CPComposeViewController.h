@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CPComposeViewController : UIViewController <UIBarPositioningDelegate>
+@interface CPComposeViewController : UIViewController <UIBarPositioningDelegate, UITextViewDelegate>
 
 @end

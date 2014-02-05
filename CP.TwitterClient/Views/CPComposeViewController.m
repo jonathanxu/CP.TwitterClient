@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *myImage;
 @property (weak, nonatomic) IBOutlet UILabel *myNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *myScreenNameLabel;
-@property (weak, nonatomic) IBOutlet UITextField *tweetTextField;
+@property (weak, nonatomic) IBOutlet UITextView *tweetTextView;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @end
 
@@ -29,15 +29,16 @@
     [self.myImage setImageWithURL:[NSURL URLWithString:currentUser.profileImageUrl]];
     self.myNameLabel.text = currentUser.name;
     self.myScreenNameLabel.text = [@"@" stringByAppendingString:currentUser.screenName];
-    self.tweetTextField.keyboardType = UIKeyboardTypeTwitter;
+    self.tweetTextView.keyboardType = UIKeyboardTypeTwitter;
+    self.tweetTextView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    [self.tweetTextField becomeFirstResponder];
-    [self updateCharacterCount];
+    [self.tweetTextView becomeFirstResponder];
+    [self updateCharacterCount:self.tweetTextView];
 }
 
 # pragma mark - UIBarPositioningDelegate
@@ -55,14 +56,15 @@
 }
 
 # pragma mark - input, update character count
-- (IBAction)tweetTextFieldEditingChanged:(id)sender
+
+- (void)textViewDidChange:(UITextView *)textView
 {
-    [self updateCharacterCount];
+    [self updateCharacterCount:textView];
 }
 
-- (void)updateCharacterCount
+- (void)updateCharacterCount:(UITextView *)textView
 {
-    int characterRemaining = 140 - self.tweetTextField.text.length;
+    int characterRemaining = 140 - textView.text.length;
     self.characterCountLabel.text = [[NSString alloc] initWithFormat:@"%d", characterRemaining];
 }
 
