@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *myNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *myScreenNameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *tweetTextField;
+@property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @end
 
 @implementation CPComposeViewController
@@ -36,6 +37,7 @@
     [super viewWillAppear:animated];
     
     [self.tweetTextField becomeFirstResponder];
+    [self updateCharacterCount];
 }
 
 # pragma mark - UIBarPositioningDelegate
@@ -50,6 +52,18 @@
 - (IBAction)touchCancel:(id)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+# pragma mark - input, update character count
+- (IBAction)tweetTextFieldEditingChanged:(id)sender
+{
+    [self updateCharacterCount];
+}
+
+- (void)updateCharacterCount
+{
+    int characterRemaining = 140 - self.tweetTextField.text.length;
+    self.characterCountLabel.text = [[NSString alloc] initWithFormat:@"%d", characterRemaining];
 }
 
 @end

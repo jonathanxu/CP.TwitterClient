@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CPComposeViewController">
             <connections>
+                <outlet property="characterCountLabel" destination="69h-bW-X6w" id="Zk8-R5-TNZ"/>
                 <outlet property="myImage" destination="tOP-fc-rEW" id="uOe-7l-2jv"/>
                 <outlet property="myNameLabel" destination="jnl-OB-jov" id="MbO-jH-oWi"/>
                 <outlet property="myScreenNameLabel" destination="agW-kY-wJQ" id="OKe-l1-fXP"/>
@@ -36,7 +37,7 @@
                                     <action selector="touchCancel:" destination="-1" id="vfX-l8-jPl"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem key="rightBarButtonItem" title="Tweet" id="z1P-L2-uVX"/>
+                            <barButtonItem key="rightBarButtonItem" title="Tweet" id="sZ2-rh-EXB"/>
                         </navigationItem>
                     </items>
                 </navigationBar>
@@ -70,16 +71,31 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="tweetTextFieldEditingChanged:" destination="-1" eventType="editingChanged" id="YLY-dV-hLi"/>
+                    </connections>
                 </textField>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69h-bW-X6w">
+                    <rect key="frame" x="190" y="33" width="60" height="19"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="yHa-M7-Ks8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                    <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="A5x-U2-Vb6" secondAttribute="trailing" id="55b-wq-znX"/>
+                <constraint firstAttribute="trailing" secondItem="69h-bW-X6w" secondAttribute="trailing" constant="70" id="64n-Ph-SQ4"/>
                 <constraint firstAttribute="trailing" secondItem="3uc-Oi-lKg" secondAttribute="trailing" constant="10" id="6oH-Yh-b2w"/>
                 <constraint firstAttribute="trailing" secondItem="agW-kY-wJQ" secondAttribute="trailing" constant="10" id="Agy-DN-e7s"/>
                 <constraint firstItem="A5x-U2-Vb6" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="OoM-vf-hjK"/>
                 <constraint firstItem="agW-kY-wJQ" firstAttribute="top" secondItem="jnl-OB-jov" secondAttribute="bottom" constant="6" id="P3Q-no-JUM"/>
                 <constraint firstItem="tOP-fc-rEW" firstAttribute="top" secondItem="jnl-OB-jov" secondAttribute="top" id="Rgu-B8-7CV"/>
+                <constraint firstItem="jnl-OB-jov" firstAttribute="top" secondItem="69h-bW-X6w" secondAttribute="bottom" constant="22" id="Tit-uj-yc4"/>
                 <constraint firstItem="tOP-fc-rEW" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="12" id="XHX-KM-9bH"/>
                 <constraint firstItem="agW-kY-wJQ" firstAttribute="leading" secondItem="tOP-fc-rEW" secondAttribute="trailing" constant="8" id="bMy-fu-Hsg"/>
                 <constraint firstItem="3uc-Oi-lKg" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="10" id="bq2-W6-wFF"/>
