@@ -93,15 +93,20 @@ static NSDateFormatter * sVeryShortDateFormatter;
         userDict = (NSDictionary *)[tweet objectForKey:@"user"];
     }
     
-    self.tweetId = [[tweet objectForKey:@"id"] longLongValue];
+    self.tweetId = [tweet objectForKey:@"id_str"];
     
     self.user__name = [userDict objectForKey:@"name"];
     self.user__screen_name = [userDict objectForKey:@"screen_name"];
     self.user__profile_image_url = [userDict objectForKey:@"profile_image_url"];
 
     self.retweet_count = [[tweet objectForKey:@"retweet_count"] unsignedIntegerValue];
-    self.favorite_count = [[tweet objectForKey:@"favorite_count"] unsignedIntegerValue];
     self.retweeted = [[tweet objectForKey:@"retweeted"] boolValue];
+    if (self.retweeted) {
+        NSDictionary *myRetweet = [tweet objectForKey:@"current_user_retweet"];
+        self.retweetId = [myRetweet objectForKey:@"id_str"];
+    }
+    
+    self.favorite_count = [[tweet objectForKey:@"favorite_count"] unsignedIntegerValue];
     self.favorited = [[tweet objectForKey:@"favorited"] boolValue];
     
     self.text = [tweet objectForKey:@"text"];
@@ -136,6 +141,31 @@ static NSDateFormatter * sVeryShortDateFormatter;
 }
 
 #pragma mark - actions
+
+- (BOOL)toggleRetweet
+{
+    CPTwitterAPIClient *apiClient = [CPTwitterAPIClient sharedInstance];
+    
+    if (self.retweeted) {
+        // action: undo retweet
+        self.retweet_count--;
+        [apiClient undoRetweet:[self.retweetId copy]];
+        self.retweetId = nil;
+    }
+    else {
+        // action: retweet
+        self.retweet_count++;
+        [apiClient retweet:self.tweetId
+                   success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                       NSLog(@"CPTimelineViewController.retweet: success");
+                       NSDictionary *tweet = responseObject;
+                       self.retweetId = [tweet objectForKey:@"id_str"];
+                   }];
+    }
+    
+    self.retweeted = !self.retweeted;
+    return self.retweeted;
+}
 
 - (BOOL)toggleFavorite
 {

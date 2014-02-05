@@ -11,6 +11,8 @@
 
 static NSString *const kTwitterAPIHOST = @"api.twitter.com";
 static NSString *const kTwitterAPITimeline = @"/1.1/statuses/home_timeline.json";
+static NSString *const kTwitterAPIRetweetWithFormat = @"/1.1/statuses/retweet/%@.json";
+static NSString *const kTwitterAPIUndoRetweetWithFormat = @"/1.1/statuses/destroy/%@.json";
 static NSString *const kTwitterAPIFavorite = @"/1.1/favorites/create.json";
 static NSString *const kTwitterAPIUnfavorite = @"/1.1/favorites/destroy.json";
 static NSString *const kTwitterConsumerKey = @"ans9wMG7I4gicfyaVf7Mkw";
@@ -67,7 +69,8 @@ static NSString *const kTwitterConsumerSecret = @"UtC1DWiw4CCYAuHXFEMXfybmYLjq8b
       success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
-    NSDictionary *tempParams = @{@"count": [NSString stringWithFormat:@"%d", count]};
+    NSDictionary *tempParams = @{@"include_my_retweet": @"true",
+                                 @"count": [NSString stringWithFormat:@"%d", count]};
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:tempParams];
     if (sinceId > 0) {
         [params setObject:[NSString stringWithFormat:@"%d", sinceId] forKey:@"since_id"];
@@ -83,24 +86,43 @@ static NSString *const kTwitterConsumerSecret = @"UtC1DWiw4CCYAuHXFEMXfybmYLjq8b
                      failure:failure];
 }
 
-- (void)favorite:(long long)tweetId
+- (void)retweet:(NSString *)tweetId
+        success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
 {
-    NSDictionary *params = @{@"id": [[NSString alloc] initWithFormat:@"%lld", tweetId]};
+    NSString *path = [[NSString alloc] initWithFormat:kTwitterAPIRetweetWithFormat, tweetId];
     
+    [self sendRequestForPath:path
+                      method:@"POST"
+                      params:nil
+                     success:success
+                     failure:nil];
+}
+
+- (void)undoRetweet:(NSString *)retweetId; // NOTE: this is the *re*tweetId
+{
+    NSString *path = [[NSString alloc] initWithFormat:kTwitterAPIUndoRetweetWithFormat, retweetId];
+    
+    [self sendRequestForPath:path
+                      method:@"POST"
+                      params:nil
+                     success:nil
+                     failure:nil];
+}
+
+- (void)favorite:(NSString *)tweetId
+{
     [self sendRequestForPath:kTwitterAPIFavorite
                       method:@"POST"
-                          params:params
+                          params:@{@"id": tweetId}
                          success:nil
                          failure:nil];
 }
 
-- (void)unfavorite:(long long)tweetId
+- (void)unfavorite:(NSString *)tweetId
 {
-    NSDictionary *params = @{@"id": [[NSString alloc] initWithFormat:@"%lld", tweetId]};
-    
     [self sendRequestForPath:kTwitterAPIUnfavorite
                       method:@"POST"
-                      params:params
+                      params:@{@"id": tweetId}
                      success:nil
                      failure:nil];
 }

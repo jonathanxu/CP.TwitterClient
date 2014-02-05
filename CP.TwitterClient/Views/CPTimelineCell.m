@@ -121,6 +121,8 @@
 - (IBAction)touchRetweet
 {
     NSLog(@"CPTimelineCell.touchRetweet");
+    BOOL retweeted = [self.model toggleRetweet];
+    [self adjustButton:self.retweetButton imageName:@"retweet" onState:retweeted];
 }
 
 - (IBAction)touchFavorite

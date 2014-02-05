@@ -22,7 +22,13 @@
       success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
-- (void)favorite:(long long)tweetId;
-- (void)unfavorite:(long long)tweetId;
+// caller could use success block to get the retweetId
+- (void)retweet:(NSString *)tweetId
+        success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success;
+
+- (void)undoRetweet:(NSString *)reTweetId; // NOTE: this is the *re*tweetId
+
+- (void)favorite:(NSString *)tweetId;
+- (void)unfavorite:(NSString *)tweetId;
 
 @end
