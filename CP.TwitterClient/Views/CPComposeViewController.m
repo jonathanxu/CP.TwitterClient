@@ -91,7 +91,9 @@
     int characterRemaining = 140 - textView.text.length;
     self.characterCountLabel.text = [[NSString alloc] initWithFormat:@"%d", characterRemaining];
     if ((characterRemaining < 0) || (characterRemaining == 140)) {
-        self.characterCountLabel.textColor = [UIColor redColor];
+        if (characterRemaining < 0) {
+            self.characterCountLabel.textColor = [UIColor redColor];
+        }
         self.tweetButton.enabled = NO;
     }
     else {
