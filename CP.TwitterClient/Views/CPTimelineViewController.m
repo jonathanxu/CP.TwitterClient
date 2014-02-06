@@ -84,6 +84,7 @@
 
     CPTweet *model = [self.tweets tweetAtIndex:indexPath.row];
     cell.model = model;
+    cell.replyActionDelegate = self;
     
     return cell;
 }
@@ -149,6 +150,20 @@
         }
         [self.tableView insertRowsAtIndexPaths:indexPaths
                               withRowAnimation:UITableViewRowAnimationTop];
+    }
+}
+
+#pragma mark - CPReplyActionDelegate
+
+- (void)reply:(CPTweet *)tweet
+{
+    if (tweet) {
+        CPComposeViewController *composeVC = [[CPComposeViewController alloc] init];
+        composeVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        composeVC.inReplyToTweetId = tweet.tweetId;
+        composeVC.inReplyToScreenName = tweet.user__screen_name;
+        composeVC.dismissAfterComposeDelegate = self;
+        [self presentViewController:composeVC animated:YES completion:nil];
     }
 }
 

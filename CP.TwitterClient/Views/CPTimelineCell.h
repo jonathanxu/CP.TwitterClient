@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CPTweet.h"
+#import "CPReplyActionDelegate.h"
 
 @interface CPTimelineCell : UITableViewCell
 @property (weak, nonatomic) CPTweet *model;
+@property (weak, nonatomic) id <CPReplyActionDelegate> replyActionDelegate;
 @end

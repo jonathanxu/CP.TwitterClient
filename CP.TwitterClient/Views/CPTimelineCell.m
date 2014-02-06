@@ -116,6 +116,7 @@
 - (IBAction)touchReply
 {
     NSLog(@"CPTimelineCell.touchReply");
+    [self.replyActionDelegate reply:self.model];
 }
 
 - (IBAction)touchRetweet

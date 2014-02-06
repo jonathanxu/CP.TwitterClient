@@ -58,3 +58,7 @@ When tweet detail view is popped from the navigation controller, and timeline vi
 After composing a new tweet, a success completion block is used to call a delegate `CPDismissAfterComposeDelegate`.
 
 This delegate will dismiss the compose view, and do the right thing.  For example, CPTimelineViewController would add the new tweet to its list of tweets at index 0, and add a new row to its table view.
+
+For reply within `CPDetailViewController`, there are two layers of delegate to make sure all the replies are making back to top of timeline.
+
+For reply within a table cell, there is another delegate for table cell to hand off to `CPTimelineViewController` to bring up modal (`CPComposeViewController`).

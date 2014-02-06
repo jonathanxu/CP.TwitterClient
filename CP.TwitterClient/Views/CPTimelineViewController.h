@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CPUser.h"
 #import "CPDismissAfterComposeDelegate.h"
+#import "CPReplyActionDelegate.h"
 
-@interface CPTimelineViewController : UITableViewController <CPDismissAfterComposeDelegate>
+@interface CPTimelineViewController : UITableViewController <CPDismissAfterComposeDelegate, CPReplyActionDelegate>
 @end

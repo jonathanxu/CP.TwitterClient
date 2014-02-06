@@ -75,6 +75,7 @@
 		3E02AC3D189DBBAA0092C4BB /* CPTimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPTimelineViewController.h; path = Views/CPTimelineViewController.h; sourceTree = "<group>"; };
 		3E02AC3E189DBBAA0092C4BB /* CPTimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPTimelineViewController.m; path = Views/CPTimelineViewController.m; sourceTree = "<group>"; };
 		3E0AE6D518A37D8D002FF581 /* CPDismissAfterComposeDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CPDismissAfterComposeDelegate.h; path = Views/CPDismissAfterComposeDelegate.h; sourceTree = "<group>"; };
+		3E105E1E18A44A3E00CF1231 /* CPReplyActionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CPReplyActionDelegate.h; path = Views/CPReplyActionDelegate.h; sourceTree = "<group>"; };
 		3E7016F6189DCF4C006A081D /* CPTimelineTweets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPTimelineTweets.h; path = Models/CPTimelineTweets.h; sourceTree = "<group>"; };
 		3E7016F7189DCF4C006A081D /* CPTimelineTweets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CPTimelineTweets.m; path = Models/CPTimelineTweets.m; sourceTree = "<group>"; };
 		3E7016FA189E2CD9006A081D /* CPTwitterAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CPTwitterAPIClient.h; path = API/CPTwitterAPIClient.h; sourceTree = "<group>"; };
@@ -210,6 +211,7 @@
 				3E7E1B0718A2D2270064EC4E /* CPComposeViewController.m */,
 				3E7E1B0818A2D2270064EC4E /* CPComposeViewController.xib */,
 				3E0AE6D518A37D8D002FF581 /* CPDismissAfterComposeDelegate.h */,
+				3E105E1E18A44A3E00CF1231 /* CPReplyActionDelegate.h */,
 			);
 			name = Views;
 			sourceTree = "<group>";
