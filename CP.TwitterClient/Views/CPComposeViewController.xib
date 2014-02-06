@@ -11,6 +11,7 @@
                 <outlet property="myNameLabel" destination="jnl-OB-jov" id="MbO-jH-oWi"/>
                 <outlet property="myScreenNameLabel" destination="agW-kY-wJQ" id="OKe-l1-fXP"/>
                 <outlet property="navigationBar" destination="A5x-U2-Vb6" id="TdQ-Bh-m22"/>
+                <outlet property="tweetButton" destination="sZ2-rh-EXB" id="xnG-oc-ICT"/>
                 <outlet property="tweetTextView" destination="Z6y-ng-VYa" id="XJT-Yb-G1p"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -26,6 +27,7 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="64" id="Mim-gP-yVL"/>
                     </constraints>
+                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="barTintColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                     <textAttributes key="titleTextAttributes">
                         <color key="textColor" red="0.33333333329999998" green="0.67450980390000004" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -37,7 +39,11 @@
                                     <action selector="touchCancel:" destination="-1" id="vfX-l8-jPl"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem key="rightBarButtonItem" title="Tweet" id="sZ2-rh-EXB"/>
+                            <barButtonItem key="rightBarButtonItem" title="Tweet" id="sZ2-rh-EXB">
+                                <connections>
+                                    <action selector="touchTweet:" destination="-1" id="R0q-L6-N52"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
@@ -63,10 +69,11 @@
                     <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69h-bW-X6w">
-                    <rect key="frame" x="190" y="33" width="60" height="19"/>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="69h-bW-X6w">
+                    <rect key="frame" x="190" y="32" width="60" height="19"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <constraints>
+                        <constraint firstAttribute="height" constant="19" id="7tx-L6-f9I"/>
                         <constraint firstAttribute="width" constant="60" id="yHa-M7-Ks8"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
@@ -94,7 +101,7 @@
                 <constraint firstItem="A5x-U2-Vb6" firstAttribute="leading" secondItem="1" secondAttribute="leading" id="OoM-vf-hjK"/>
                 <constraint firstItem="agW-kY-wJQ" firstAttribute="top" secondItem="jnl-OB-jov" secondAttribute="bottom" constant="6" id="P3Q-no-JUM"/>
                 <constraint firstItem="tOP-fc-rEW" firstAttribute="top" secondItem="jnl-OB-jov" secondAttribute="top" id="Rgu-B8-7CV"/>
-                <constraint firstItem="jnl-OB-jov" firstAttribute="top" secondItem="69h-bW-X6w" secondAttribute="bottom" constant="22" id="Tit-uj-yc4"/>
+                <constraint firstItem="69h-bW-X6w" firstAttribute="top" secondItem="1" secondAttribute="top" constant="32" id="WFl-a6-kiK"/>
                 <constraint firstItem="tOP-fc-rEW" firstAttribute="leading" secondItem="1" secondAttribute="leading" constant="12" id="XHX-KM-9bH"/>
                 <constraint firstItem="agW-kY-wJQ" firstAttribute="leading" secondItem="tOP-fc-rEW" secondAttribute="trailing" constant="8" id="bMy-fu-Hsg"/>
                 <constraint firstAttribute="trailing" secondItem="jnl-OB-jov" secondAttribute="trailing" constant="10" id="kVo-3p-otg"/>
