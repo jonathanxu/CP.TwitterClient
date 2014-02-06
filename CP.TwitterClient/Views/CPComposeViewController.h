@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CPTweet.h"
+#import "CPDismissAfterComposeDelegate.h"
 
 @interface CPComposeViewController : UIViewController <UIBarPositioningDelegate, UITextViewDelegate>
-
+@property (weak, nonatomic) id <CPDismissAfterComposeDelegate> dismissAfterComposeDelegate;
+@property (strong, nonatomic) NSString *inReplyToTweetId;
 @end

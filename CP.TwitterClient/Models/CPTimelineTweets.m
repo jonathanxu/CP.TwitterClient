@@ -34,4 +34,15 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPTimelineTweets";
     }
 }
 
+- (void)addTweetAtBeginning:(CPTweet *)tweet
+{
+    if (!self.tweetList) {
+        self.tweetList = [[NSMutableArray alloc] initWithCapacity:1];
+        [self.tweetList addObject:tweet];
+    }
+    else {
+        [self.tweetList insertObject:tweet atIndex:0];
+    }
+}
+
 @end

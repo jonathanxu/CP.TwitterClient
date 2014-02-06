@@ -15,6 +15,8 @@ static NSString *const kTwitterAPIRetweetWithFormat = @"/1.1/statuses/retweet/%@
 static NSString *const kTwitterAPIUndoRetweetWithFormat = @"/1.1/statuses/destroy/%@.json";
 static NSString *const kTwitterAPIFavorite = @"/1.1/favorites/create.json";
 static NSString *const kTwitterAPIUnfavorite = @"/1.1/favorites/destroy.json";
+static NSString *const kTwitterAPITweet = @"/1.1/statuses/update.json";
+
 static NSString *const kTwitterConsumerKey = @"ans9wMG7I4gicfyaVf7Mkw";
 static NSString *const kTwitterConsumerSecret = @"UtC1DWiw4CCYAuHXFEMXfybmYLjq8b753Kmp7pE4OOA";
 
@@ -124,6 +126,22 @@ static NSString *const kTwitterConsumerSecret = @"UtC1DWiw4CCYAuHXFEMXfybmYLjq8b
                       method:@"POST"
                       params:@{@"id": tweetId}
                      success:nil
+                     failure:nil];
+}
+
+- (void)tweet:(NSString *)text inReplyToTweetId:(NSString *)inReplyToTweetId
+      success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+{
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    [params setObject:text forKey:@"status"];
+    if (inReplyToTweetId) {
+        [params setObject:inReplyToTweetId forKey:@"in_reply_to_status_id"];
+    }
+
+    [self sendRequestForPath:kTwitterAPITweet
+                      method:@"POST"
+                      params:params
+                     success:success
                      failure:nil];
 }
 

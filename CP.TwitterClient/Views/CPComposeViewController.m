@@ -9,6 +9,7 @@
 #import "CPComposeViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "CPUser.h"
+#import "CPTwitterAPIClient.h"
 
 @interface CPComposeViewController ()
 @property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
@@ -66,10 +67,14 @@
 
 - (IBAction)touchTweet:(id)sender
 {
-    NSLog(@"CPComposeViewController.touchTweet");
-    int characterRemaining = 140 - self.tweetTextView.text.length;
-    if (characterRemaining >= 0) {
-    }
+    CPTwitterAPIClient * apiClient = [CPTwitterAPIClient sharedInstance];
+    [apiClient tweet:self.tweetTextView.text
+    inReplyToTweetId:self.inReplyToTweetId
+             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 NSLog(@"CPComposeViewController.touchTweet: success");
+                 [self.dismissAfterComposeDelegate dismissWithTweetDictionary:responseObject];
+             }
+     ];
 }
 
 # pragma mark - input, update character count

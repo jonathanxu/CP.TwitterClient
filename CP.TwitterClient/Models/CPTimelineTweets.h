@@ -14,4 +14,5 @@
 - (NSUInteger)count;
 - (CPTweet *)tweetAtIndex:(NSUInteger)index;
 - (void)reloadTweets:(NSArray *)tweets;
+- (void)addTweetAtBeginning:(CPTweet *)tweet;
 @end

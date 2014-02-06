@@ -31,4 +31,7 @@
 - (void)favorite:(NSString *)tweetId;
 - (void)unfavorite:(NSString *)tweetId;
 
+- (void)tweet:(NSString *)text inReplyToTweetId:(NSString *)inReplyToTweetId
+      success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success;
+
 @end

@@ -52,3 +52,9 @@ When tweet detail view is popped from the navigation controller, and timeline vi
 - Retweet and Favorite are handled in model (`CPTweet`) with help of `CPTwitterAPIClient`. 
 - Most calls are fire-and-forget, with the model updates itself immediately. 
 - For retweet, the model supplies a success completion block to retrieve the new retweet id and store on itself, so immediate undo can be performed.
+
+### Compose new tweet
+
+After composing a new tweet, a success completion block is used to call a delegate `CPDismissAfterComposeDelegate`.
+
+This delegate will dismiss the compose view, and do the right thing.  For example, CPTimelineViewController would add the new tweet to its list of tweets at index 0, and add a new row to its table view.

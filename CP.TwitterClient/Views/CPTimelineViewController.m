@@ -60,7 +60,7 @@
 {
     CPComposeViewController *composeVC = [[CPComposeViewController alloc] init];
     composeVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    // TODO: set delegate
+    composeVC.dismissAfterComposeDelegate = self;
     [self presentViewController:composeVC animated:YES completion:nil];
 }
 
@@ -132,7 +132,20 @@
     }
 }
 
-# pragma mark - reload data
+#pragma mark - CPDismissAfterComposeDelegate
+
+- (void)dismissWithTweetDictionary:(NSDictionary *)tweetDictionary
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    CPTweet *newTweet = [[CPTweet alloc] initWithDictionary:tweetDictionary];
+    [self.tweets addTweetAtBeginning:newTweet];
+    
+    NSIndexPath *firstIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[firstIndexPath] withRowAnimation:UITableViewRowAnimationTop];    
+}
+
+#pragma mark - reload data
 
 - (void)reload
 {
