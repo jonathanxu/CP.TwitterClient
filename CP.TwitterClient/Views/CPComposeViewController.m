@@ -36,10 +36,6 @@
     self.tweetTextView.keyboardType = UIKeyboardTypeTwitter;
     self.tweetTextView.delegate = self;
     
-    self.enabledBarButtonColor = [UIColor colorWithRed:0.0/255.0
-                                                 green:122.0/255.0
-                                                  blue:255.0/255.0
-                                                 alpha:1];
     self.halfBlack = [UIColor colorWithRed:128.0/255.0
                                      green:128.0/255.0
                                       blue:128.0/255.0
@@ -70,9 +66,9 @@
 
 - (IBAction)touchTweet:(id)sender
 {
+    NSLog(@"CPComposeViewController.touchTweet");
     int characterRemaining = 140 - self.tweetTextView.text.length;
     if (characterRemaining >= 0) {
-        NSLog(@"CPComposeViewController.touchTweet");
     }
 }
 
@@ -85,16 +81,15 @@
 
 - (void)updateCharacterCount:(UITextView *)textView
 {
-    
     int characterRemaining = 140 - textView.text.length;
     self.characterCountLabel.text = [[NSString alloc] initWithFormat:@"%d", characterRemaining];
-    if (characterRemaining < 0) {
+    if ((characterRemaining < 0) || (characterRemaining == 140)) {
         self.characterCountLabel.textColor = [UIColor redColor];
-        self.tweetButton.tintColor = self.halfBlack;
+        self.tweetButton.enabled = NO;
     }
     else {
         self.characterCountLabel.textColor = self.halfBlack;
-        self.tweetButton.tintColor = self.enabledBarButtonColor;
+        self.tweetButton.enabled = YES;
     }
 }
 
