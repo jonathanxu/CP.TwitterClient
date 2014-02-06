@@ -72,7 +72,9 @@
     inReplyToTweetId:self.inReplyToTweetId
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
                  NSLog(@"CPComposeViewController.touchTweet: success");
-                 [self.dismissAfterComposeDelegate dismissWithTweetDictionary:responseObject];
+                 [self dismissViewControllerAnimated:YES completion:^{
+                     [self.dismissAfterComposeDelegate dismissWithTweetDictionary:responseObject];
+                 }];
              }
      ];
 }

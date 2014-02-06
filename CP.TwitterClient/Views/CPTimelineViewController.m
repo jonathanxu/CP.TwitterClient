@@ -136,8 +136,6 @@
 
 - (void)dismissWithTweetDictionary:(NSDictionary *)tweetDictionary
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
     CPTweet *newTweet = [[CPTweet alloc] initWithDictionary:tweetDictionary];
     [self.tweets addTweetAtBeginning:newTweet];
     
