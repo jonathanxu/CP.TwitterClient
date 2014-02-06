@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "CPTweet.h"
+#import "CPComposeViewController.h"
 
-@interface CPDetailViewController : UIViewController
+@interface CPDetailViewController : UIViewController <CPDismissAfterComposeDelegate>
 @property (weak, nonatomic) CPTweet *model;
+@property (weak, nonatomic) id <CPDismissAfterComposeDelegate> dismissAfterComposeDelegate;
 @end

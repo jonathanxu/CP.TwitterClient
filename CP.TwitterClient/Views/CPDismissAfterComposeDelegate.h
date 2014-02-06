@@ -10,5 +10,5 @@
 #import "CPTweet.h"
 
 @protocol CPDismissAfterComposeDelegate <NSObject>
-- (void)dismissWithTweetDictionary:(NSDictionary *)tweetDictionary;
+- (void)dismissWithTweets:(NSArray *)newTweets;
 @end

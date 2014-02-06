@@ -37,6 +37,10 @@
     self.tweetTextView.keyboardType = UIKeyboardTypeTwitter;
     self.tweetTextView.delegate = self;
     
+    if (self.inReplyToScreenName) {
+        self.tweetTextView.text = [[NSString alloc] initWithFormat:@"@%@ ", self.inReplyToScreenName];
+    }
+    
     self.halfBlack = [UIColor colorWithRed:128.0/255.0
                                      green:128.0/255.0
                                       blue:128.0/255.0
@@ -73,7 +77,8 @@
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
                  NSLog(@"CPComposeViewController.touchTweet: success");
                  [self dismissViewControllerAnimated:YES completion:^{
-                     [self.dismissAfterComposeDelegate dismissWithTweetDictionary:responseObject];
+                     CPTweet *newTweet = [[CPTweet alloc] initWithDictionary:responseObject];
+                     [self.dismissAfterComposeDelegate dismissWithTweets:@[newTweet]];
                  }];
              }
      ];

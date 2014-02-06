@@ -23,6 +23,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
 @property (weak, nonatomic) IBOutlet UIButton *retweetButton;
 @property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+
+@property (strong, nonatomic) NSMutableArray *myReplies;
 @end
 
 @implementation CPDetailViewController
@@ -103,9 +105,32 @@
 
 #pragma mark - actions
 
+- (IBAction)touchBack:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
+    [self.dismissAfterComposeDelegate dismissWithTweets:self.myReplies];
+}
+
+- (IBAction)touchReplyBarButton:(id)sender
+{
+    NSLog(@"CPDetailViewController.touchReplyBarButton");
+    [self doReply];
+}
+
 - (IBAction)touchReply
 {
     NSLog(@"CPDetailViewController.touchReply");
+    [self doReply];
+}
+
+- (void)doReply
+{
+    CPComposeViewController *composeVC = [[CPComposeViewController alloc] init];
+    composeVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    composeVC.inReplyToTweetId = self.model.tweetId;
+    composeVC.inReplyToScreenName = self.model.user__screen_name;
+    composeVC.dismissAfterComposeDelegate = self;
+    [self presentViewController:composeVC animated:YES completion:nil];
 }
 
 - (IBAction)touchRetweet
@@ -120,6 +145,20 @@
     NSLog(@"CPDetailViewController.touchFavorite");
     BOOL favorited = [self.model toggleFavorite];
     [self adjustButton:self.favoriteButton imageName:@"favorite" onState:favorited];
+}
+
+#pragma mark - CPDismissAfterComposeDelegate
+
+- (void)dismissWithTweets:(NSArray *)tweets
+{
+    if (tweets) {
+        if (!self.myReplies) {
+            self.myReplies = [[NSMutableArray alloc] initWithArray:tweets];
+        }
+        else {
+            [self.myReplies addObjectsFromArray:tweets];
+        }
+    }
 }
 
 @end

@@ -13,4 +13,5 @@
 @interface CPComposeViewController : UIViewController <UIBarPositioningDelegate, UITextViewDelegate>
 @property (weak, nonatomic) id <CPDismissAfterComposeDelegate> dismissAfterComposeDelegate;
 @property (strong, nonatomic) NSString *inReplyToTweetId;
+@property (strong, nonatomic) NSString *inReplyToScreenName;
 @end

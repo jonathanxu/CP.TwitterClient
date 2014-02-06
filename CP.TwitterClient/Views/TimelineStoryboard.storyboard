@@ -376,8 +376,17 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="fzj-zI-gOL">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="grh-DG-c8H">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="touchBack:" destination="wEu-Wz-DAT" id="Kt5-BP-MUk"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Reply" id="UhD-4G-YRZ">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="touchReplyBarButton:" destination="wEu-Wz-DAT" id="dds-ar-zN5"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>

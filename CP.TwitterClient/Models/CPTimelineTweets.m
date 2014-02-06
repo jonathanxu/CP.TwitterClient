@@ -34,14 +34,17 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPTimelineTweets";
     }
 }
 
-- (void)addTweetAtBeginning:(CPTweet *)tweet
+- (void)addTweetsAtBeginning:(NSArray *)tweets
 {
-    if (!self.tweetList) {
-        self.tweetList = [[NSMutableArray alloc] initWithCapacity:1];
-        [self.tweetList addObject:tweet];
-    }
-    else {
-        [self.tweetList insertObject:tweet atIndex:0];
+    if (tweets) {
+        if (!self.tweetList) {
+            self.tweetList = [[NSMutableArray alloc] initWithArray:tweets];
+        }
+        else {
+            NSRange range = NSMakeRange(0, [tweets count]);
+            NSIndexSet *indexSet = [[NSIndexSet alloc] initWithIndexesInRange:range];
+            [self.tweetList insertObjects:tweets atIndexes:indexSet];
+        }
     }
 }
 

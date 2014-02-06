@@ -129,18 +129,27 @@
     {
         CPDetailViewController *detailVC = [segue destinationViewController];
         detailVC.model = (CPTweet *)sender;
+        detailVC.dismissAfterComposeDelegate = self;
     }
 }
 
 #pragma mark - CPDismissAfterComposeDelegate
 
-- (void)dismissWithTweetDictionary:(NSDictionary *)tweetDictionary
+- (void)dismissWithTweets:(NSArray *)newTweets
 {
-    CPTweet *newTweet = [[CPTweet alloc] initWithDictionary:tweetDictionary];
-    [self.tweets addTweetAtBeginning:newTweet];
+    NSLog(@"CPTimelineViewController.dismissWithTweets");
     
-    NSIndexPath *firstIndexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[firstIndexPath] withRowAnimation:UITableViewRowAnimationTop];    
+    NSUInteger count = [newTweets count];
+    if (count > 0) {
+        [self.tweets addTweetsAtBeginning:newTweets];
+
+        NSMutableArray *indexPaths = [[NSMutableArray alloc] initWithCapacity:count];
+        for (int i = 0; i < count; i++) {
+            [indexPaths addObject:[NSIndexPath indexPathForRow:i inSection:0]];
+        }
+        [self.tableView insertRowsAtIndexPaths:indexPaths
+                              withRowAnimation:UITableViewRowAnimationTop];
+    }
 }
 
 #pragma mark - reload data
