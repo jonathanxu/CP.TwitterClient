@@ -28,10 +28,7 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPTimelineTweets";
 
 - (void)reloadTweets:(NSArray *)tweets
 {
-    self.tweetList = [[NSMutableArray alloc] initWithCapacity:[tweets count]];
-    for (NSDictionary *tweet in tweets) {
-        [self.tweetList addObject:[[CPTweet alloc] initWithDictionary:tweet]];
-    }
+    self.tweetList = [tweets mutableCopy];
 }
 
 - (void)addTweetsAtBeginning:(NSArray *)tweets
@@ -46,6 +43,38 @@ static NSString *const kPersistKey = @"CP.TwitterClient.CPTimelineTweets";
             [self.tweetList insertObjects:tweets atIndexes:indexSet];
         }
     }
+}
+
+- (void)addTweetsAtEnd:(NSArray *)tweets
+{
+    if (tweets) {
+        if (!self.tweetList) {
+            self.tweetList = [[NSMutableArray alloc] initWithArray:tweets];
+        }
+        else {
+            // drop repeat tweet
+            CPTweet *lastOld = (CPTweet *)[self.tweetList lastObject];
+            if (lastOld) {
+                CPTweet *firstNew = (CPTweet *)[tweets firstObject];
+                if ([lastOld.tweetId isEqualToString:firstNew.tweetId]) {
+                    [self.tweetList removeLastObject];
+                }
+            }
+            [self.tweetList addObjectsFromArray:tweets];
+        }
+    }
+}
+
+- (NSString *)getNewestTweetId
+{
+    CPTweet *tweet = [self.tweetList firstObject];
+    return tweet.tweetId;
+}
+
+- (NSString *)getOldestTweetId
+{
+    CPTweet *tweet = [self.tweetList lastObject];
+    return tweet.tweetId;
 }
 
 @end

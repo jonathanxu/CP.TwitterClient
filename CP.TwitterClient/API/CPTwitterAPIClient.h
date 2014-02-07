@@ -17,8 +17,8 @@
 - (void)setAccessToken:(NSString *)accessToken secret:(NSString *)secret;
 
 - (void)fetch:(NSUInteger)count
-      sinceId:(NSUInteger)sinceId
-        maxId:(NSUInteger)maxId
+      sinceId:(NSString *)sinceId
+        maxId:(NSString *)maxId
       success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 

@@ -12,6 +12,7 @@
 #import "CPTimelineCell.h"
 #import "CPDetailViewController.h"
 #import "CPComposeViewController.h"
+#import "UIScrollView+SVInfiniteScrolling.h"
 
 @interface CPTimelineViewController ()
 @property (strong, nonatomic) CPTimelineTweets *tweets;
@@ -27,6 +28,12 @@
 
     self.clearsSelectionOnViewWillAppear = NO;
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    
+    // use a weak reference inside block to avoid retain cycle
+    __weak CPTimelineViewController *weakVC = self;
+    [self.tableView addInfiniteScrollingWithActionHandler:^ {
+        [weakVC infiniteScroll];
+    }];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -173,11 +180,12 @@
 {
     CPTwitterAPIClient *apiClient = [CPTwitterAPIClient sharedInstance];
     [apiClient fetch:20
-             sinceId:0
-               maxId:0
+             sinceId:nil
+               maxId:nil
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
                  NSLog(@"CPTimelineViewController.reload: success");
-                 [self.tweets reloadTweets:(NSArray *) responseObject];
+                 NSArray * newTweets = [CPTweet tweetsFromArrayOfDictionary:responseObject];
+                 [self.tweets reloadTweets:newTweets];
                  [self.tableView reloadData];
                  [self.refreshControl endRefreshing];
              }
@@ -185,6 +193,30 @@
                  NSLog(@"CPTimelineViewController.reload: failure. %@", error);
              }
      ];
+}
+
+- (void)infiniteScroll
+{
+    NSLog(@"CPTimelineViewController.infiniteScroll");
+    
+    CPTwitterAPIClient *apiClient = [CPTwitterAPIClient sharedInstance];
+    NSString *maxId = [self.tweets getOldestTweetId];
+    [apiClient fetch:20
+             sinceId:nil
+               maxId:maxId
+             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 NSLog(@"CPTimelineViewController.infiniteScroll: success");
+                 NSArray * newTweets = [CPTweet tweetsFromArrayOfDictionary:responseObject];
+                 [self.tweets addTweetsAtEnd:newTweets];
+                 [self.tableView reloadData];
+                 [[self.tableView infiniteScrollingView] stopAnimating];
+             }
+             failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+                 NSLog(@"CPTimelineViewController.infiniteScroll: failure. %@", error);
+                 [[self.tableView infiniteScrollingView] stopAnimating];
+             }
+     ];
+    
 }
 
 @end

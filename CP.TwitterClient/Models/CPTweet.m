@@ -16,6 +16,15 @@
 
 @implementation CPTweet
 
++ (NSArray *)tweetsFromArrayOfDictionary:(NSArray *)arrayOfDictionary
+{
+    NSMutableArray *retVal = [[NSMutableArray alloc] initWithCapacity:[arrayOfDictionary count]];
+    for (NSDictionary *dict in arrayOfDictionary) {
+        [retVal addObject:[[CPTweet alloc] initWithDictionary:dict]];
+    }
+    return retVal;
+}
+
 // disabled initializer
 - (instancetype)init
 {

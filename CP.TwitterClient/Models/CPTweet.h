@@ -10,6 +10,8 @@
 
 @interface CPTweet : NSObject <NSCoding>
 
++ (NSArray *)tweetsFromArrayOfDictionary:(NSArray *)arrayOfDictionary;
+
 @property (strong, nonatomic) NSString *tweetId;
 
 @property (strong, nonatomic) NSString *retweeted_by;

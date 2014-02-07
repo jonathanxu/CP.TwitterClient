@@ -66,19 +66,19 @@ static NSString *const kTwitterConsumerSecret = @"UtC1DWiw4CCYAuHXFEMXfybmYLjq8b
 }
 
 - (void)fetch:(NSUInteger)count
-      sinceId:(NSUInteger)sinceId
-        maxId:(NSUInteger)maxId
+      sinceId:(NSString *)sinceId
+        maxId:(NSString *)maxId
       success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
 {
     NSDictionary *tempParams = @{@"include_my_retweet": @"true",
                                  @"count": [NSString stringWithFormat:@"%d", count]};
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithDictionary:tempParams];
-    if (sinceId > 0) {
-        [params setObject:[NSString stringWithFormat:@"%d", sinceId] forKey:@"since_id"];
+    if (sinceId) {
+        [params setObject:sinceId forKey:@"since_id"];
     }
-    if (maxId > 0) {
-        [params setObject:[NSString stringWithFormat:@"%d", maxId] forKey:@"max_id"];
+    if (maxId) {
+        [params setObject:maxId forKey:@"max_id"];
     }
 
     [self sendRequestForPath:kTwitterAPITimeline

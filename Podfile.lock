@@ -33,11 +33,13 @@ PODS:
   - SimpleAuth/Twitter (0.3.2):
     - cocoa-oauth
     - SimpleAuth/Core
+  - SVPullToRefresh (0.4.1)
 
 DEPENDENCIES:
   - AFNetworking (~> 2.1.0)
   - cocoa-oauth (~> 0.0.1)
   - SimpleAuth/Twitter (~> 0.3.2)
+  - SVPullToRefresh (~> 0.4.1)
 
 SPEC CHECKSUMS:
   AFNetworking: c7d7901a83f631414c7eda1737261f696101a5cd
@@ -46,5 +48,6 @@ SPEC CHECKSUMS:
   NSData+Base64: 4819562faee4544e3cf5703f2139820b09732b28
   ReactiveCocoa: b3cb6ebd50f1a0f2e39c6fd7ce3c428b6efcb22b
   SimpleAuth: 9bb929e4c09ef8ee7cf4cf0967eb45239455add5
+  SVPullToRefresh: 61a0e4bd12bd6f8e3465909810b0fbeb1a28d5f2
 
 COCOAPODS: 0.29.0

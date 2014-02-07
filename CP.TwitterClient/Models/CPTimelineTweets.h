@@ -15,4 +15,7 @@
 - (CPTweet *)tweetAtIndex:(NSUInteger)index;
 - (void)reloadTweets:(NSArray *)tweets;
 - (void)addTweetsAtBeginning:(NSArray *)tweets;
+- (void)addTweetsAtEnd:(NSArray *)tweets;
+- (NSString *)getNewestTweetId;
+- (NSString *)getOldestTweetId;
 @end
