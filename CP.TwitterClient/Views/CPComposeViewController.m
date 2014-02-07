@@ -76,9 +76,13 @@
     inReplyToTweetId:self.inReplyToTweetId
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
                  NSLog(@"CPComposeViewController.touchTweet: success");
+                 
+                 // use a weak reference instead of self
+                 __weak id <CPDismissAfterComposeDelegate> weakDelegate = self.dismissAfterComposeDelegate;
+                 
                  [self dismissViewControllerAnimated:YES completion:^{
                      CPTweet *newTweet = [[CPTweet alloc] initWithDictionary:responseObject];
-                     [self.dismissAfterComposeDelegate dismissWithTweets:@[newTweet]];
+                     [weakDelegate dismissWithTweets:@[newTweet]];
                  }];
              }
      ];
