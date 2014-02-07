@@ -21,6 +21,7 @@ static NSString *const kTwitterConsumerKey = @"ans9wMG7I4gicfyaVf7Mkw";
 static NSString *const kTwitterConsumerSecret = @"UtC1DWiw4CCYAuHXFEMXfybmYLjq8b753Kmp7pE4OOA";
 
 @interface CPTwitterAPIClient ()
+@property (strong, nonatomic) NSOperationQueue *operationQueue;
 @property (strong, nonatomic) NSString *accessToken;
 @property (strong, nonatomic) NSString *accessTokenSecret;
 @end
@@ -35,6 +36,16 @@ static NSString *const kTwitterConsumerSecret = @"UtC1DWiw4CCYAuHXFEMXfybmYLjq8b
         instance = [[CPTwitterAPIClient alloc] init];
     });
     return instance;
+}
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _operationQueue = [[NSOperationQueue alloc] init];
+        _operationQueue.maxConcurrentOperationCount = 2;
+    }
+    return self;
 }
 
 - (void)setAccessToken:(NSString *)accessToken secret:(NSString *)secret
@@ -62,7 +73,8 @@ static NSString *const kTwitterConsumerSecret = @"UtC1DWiw4CCYAuHXFEMXfybmYLjq8b
     AFHTTPRequestOperation *op = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     op.responseSerializer = [AFJSONResponseSerializer serializer];
     [op setCompletionBlockWithSuccess:success failure:failure];
-    [[NSOperationQueue mainQueue] addOperation:op];
+    
+    [self.operationQueue addOperation:op];
 }
 
 - (void)fetch:(NSUInteger)count
