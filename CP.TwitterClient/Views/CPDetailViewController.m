@@ -107,8 +107,12 @@
 
 - (IBAction)touchBack:(id)sender
 {
+    // use a weak reference instead of self
+    __weak id <CPDismissAfterComposeDelegate> weakDelegate = self.dismissAfterComposeDelegate;
+    
     [self.navigationController popViewControllerAnimated:YES];
-    [self.dismissAfterComposeDelegate dismissWithTweets:self.myReplies];
+    
+    [weakDelegate dismissWithTweets:self.myReplies];
 }
 
 - (IBAction)touchReplyBarButton:(id)sender
