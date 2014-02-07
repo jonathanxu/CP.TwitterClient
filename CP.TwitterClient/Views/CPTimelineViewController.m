@@ -44,7 +44,7 @@
 
     if (!self.tweets) {
         self.tweets = [[CPTimelineTweets alloc] init];
-        [self reload];
+        [self loadFromTop];
     }
     else {
         // http://stackoverflow.com/questions/3747842/reload-uitableview-when-navigating-back
@@ -75,8 +75,7 @@
 
 - (IBAction)refresh
 {
-    [self reload];
-    
+    [self loadFromTop];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -176,17 +175,19 @@
 
 #pragma mark - reload data
 
-- (void)reload
+- (void)loadFromTop
 {
     CPTwitterAPIClient *apiClient = [CPTwitterAPIClient sharedInstance];
     [apiClient fetch:20
-             sinceId:nil
+             sinceId:[self.tweets getNewestTweetId]
                maxId:nil
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
                  NSLog(@"CPTimelineViewController.reload: success");
                  NSArray * newTweets = [CPTweet tweetsFromArrayOfDictionary:responseObject];
-                 [self.tweets reloadTweets:newTweets];
-                 [self.tableView reloadData];
+                 if ([newTweets count] > 0) {
+                     [self.tweets addTweetsAtBeginning:newTweets];
+                     [self.tableView reloadData];
+                 }
                  [self.refreshControl endRefreshing];
              }
              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -207,8 +208,10 @@
              success:^(AFHTTPRequestOperation *operation, id responseObject) {
                  NSLog(@"CPTimelineViewController.infiniteScroll: success");
                  NSArray * newTweets = [CPTweet tweetsFromArrayOfDictionary:responseObject];
-                 [self.tweets addTweetsAtEnd:newTweets];
-                 [self.tableView reloadData];
+                 if ([newTweets count] > 0) {
+                     [self.tweets addTweetsAtEnd:newTweets];
+                     [self.tableView reloadData];
+                 }
                  [[self.tableView infiniteScrollingView] stopAnimating];
              }
              failure:^(AFHTTPRequestOperation *operation, NSError *error) {
